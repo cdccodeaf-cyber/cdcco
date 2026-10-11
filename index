@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <!-- ปรับ viewport ให้รองรับหน้าจอสมาร์ตโฟน iOS และ Android ทุกรุ่น -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</title>
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --primary-hover: #003d80;
+            --accent-gold: #d4af37;
+            --dark-bg: #111827;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', sans-serif;
+            -webkit-tap-highlight-color: transparent; /* ลดรอยไฮไลต์เวลาแตะบน iOS/Android */
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 8px 5%;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin-left: 15px;
+            transition: 0.3s;
+        }
+
+        .top-bar a:hover {
+            color: var(--white);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-box img {
+            height: 60px;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+        }
+
+        .logo-text h1 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Desktop Menu */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+            background-color: rgba(0, 86, 179, 0.08);
+        }
+
+        .btn-register {
+            background-color: var(--primary-color);
+            color: var(--white) !important;
+            padding: 8px 18px !important;
+            border-radius: 20px !important;
+            box-shadow: 0 4px 10px rgba(0, 86, 179, 0.3);
+        }
+
+        .btn-register:hover {
+            background-color: var(--primary-hover) !important;
+        }
+
+        /* Hamburger Toggle Button for Mobile */
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 86, 179, 0.9), rgba(17, 24, 39, 0.85)), url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            color: var(--white);
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 26px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: var(--dark-bg);
+        }
+
+        .btn-primary:hover {
+            background-color: #c5a028;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* Services Grid */
+        .section-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h3::after {
+            content: '';
+            width: 50px;
+            height: 4px;
+            background: var(--accent-gold);
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 40px 5% 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #374151;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--accent-gold);
+        }
+
+        .footer-col p, .footer-col li {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            list-style: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        /* Responsive Breakpoints (Mobile Android & iOS / Tablets) */
+        @media (max-width: 992px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 80px 25px 30px;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                transition: right 0.3s ease-in-out;
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .nav-menu a {
+                display: block;
+                width: 100%;
+                padding: 10px 15px;
+                font-size: 1rem;
+            }
+
+            .top-bar {
+                flex-direction: column;
+                gap: 5px;
+                text-align: center;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .logo-box img {
+                height: 50px;
+            }
+
+            .logo-text h1 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Info Bar -->
+    <div class="top-bar">
+        <div><i class="fa-solid fa-location-dot"></i> ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</div>
+        <div>
+            <a href="#"><i class="fa-brands fa-facebook"></i> Facebook</a>
+            <a href="#"><i class="fa-solid fa-envelope"></i> ติดต่อเรา</a>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo-box">
+                <!-- ไฟล์โลโก้จริงจากรูปภาพที่แนบ[cite: 1] -->
+                <img src="โลโก้ ชื่อสีน้ำเงิน.jpg" alt="โลโก้ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา">
+                <div class="logo-text">
+                    <h1>ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</h1>
+                    <p>CLUB OF THE DEAF IN CHACHOENGSAO</p>
+                </div>
+            </a>
+
+            <!-- ปุ่มเปิดเมนูมือถือ (Hamburger Icon) -->
+            <div class="mobile-toggle" id="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <!-- เมนูหลักตามโจทย์ -->
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#" class="active">เกี่ยวกับชมรม</a></li>
+                <li><a href="#">หน่วยบริการ</a></li>
+                <li><a href="#">ข่าวสาร</a></li>
+                <li><a href="#">คลังข้อมูล</a></li>
+                <li><a href="#">กิจกรรม</a></li>
+                <li><a href="#">ดาวน์โหลด</a></li>
+                <li><a href="#" class="btn-register"><i class="fa-solid fa-user-plus"></i> ระบบทะเบียนสมาชิก</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <h2>ยินดีต้อนรับสู่ ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา[cite: 1]</h2>
+        <p>ศูนย์กลางส่งเสริมสิทธิ สวัสดิการ การสื่อสารภาษามือ และพัฒนาคุณภาพชีวิตของผู้พิการทางการได้ยินในจังหวัดฉะเชิงเทรา</p>
+        <div class="hero-btns">
+            <a href="#" class="btn btn-primary"><i class="fa-solid fa-id-card"></i> ลงทะเบียนสมาชิก</a>
+            <a href="#" class="btn btn-outline"><i class="fa-solid fa-hands-asl-interpreting"></i> บริการล่ามภาษามือ</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section-container">
+        <div class="section-title">
+            <h3>หน่วยบริการ & ภารกิจหลัก</h3>
+        </div>
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-hands-asl-interpreting"></i></div>
+                <h4>บริการล่ามภาษามือ</h4>
+                <p>จัดส่งและประสานงานล่ามภาษามือสำหรับติดต่อราชการ โรงพยาบาล หรือกิจกรรมต่างๆ</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-address-card"></i></div>
+                <h4>ระบบทะเบียนสมาชิก</h4>
+                <p>บริการขึ้นทะเบียน ออกบัตรสมาชิก และดูแลสิทธิประโยชน์ต่างๆ ของคนหูหนวกในจังหวัด</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <h4>ส่งเสริมอาชีพ & การฝึกอบรม</h4>
+                <p>จัดอบรมทักษะอาชีพ และการใช้ภาษามือไทยเพื่อพัฒนาคุณภาพชีวิตอย่างยั่งยืน</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</h4>
+                <p>มุ่งมั่นสร้างสังคมแห่งความเท่าเทียม เพื่อคนหูหนวกและผู้พิการทางการได้ยินทุกคน</p>
+            </div>
+            <div class="footer-col">
+                <h4>เมนูด่วน</h4>
+                <li><a href="#" style="color:#9ca3af; text-decoration:none;">ข่าวสารประชาสัมพันธ์</a></li>
+                <li><a href="#" style="color:#9ca3af; text-decoration:none;">คลังข้อมูลความรู้</a></li>
+                <li><a href="#" style="color:#9ca3af; text-decoration:none;">ดาวน์โหลดแบบฟอร์ม</a></li>
+            </div>
+            <div class="footer-col">
+                <h4>ติดต่อเรา</h4>
+                <p><i class="fa-solid fa-phone"></i> ติดต่อผ่าน LINE / SMS</p>
+                <p><i class="fa-solid fa-envelope"></i> contact@deaf-chachoengsao.or.th</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript สคริปต์ควบคุมเมนูสำหรับมือถือ Android / iOS -->
+    <script>
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileBtn.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // ปิดเมนูอัตโนมัติเมื่อกดคลิกเลือกเมนูในมือถือ
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileBtn.querySelector('i').classList.remove('fa-xmark');
+                mobileBtn.querySelector('i').classList.add('fa-bars');
+            });
+        });
+    </script>
+</body>
+</html>
