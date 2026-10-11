@@ -2,336 +2,892 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <!-- ปรับ viewport ให้รองรับหน้าจอสมาร์ตโฟน iOS และ Android ทุกรุ่น -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</title>
+    <title>ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา | Club of the Deaf in Chachoengsao</title>
     
     <!-- Google Fonts & Font Awesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --primary-color: #0056b3;
-            --primary-hover: #003d80;
+            --primary-blue: #0033a0;
+            --primary-dark: #002169;
             --accent-gold: #d4af37;
-            --dark-bg: #111827;
-            --light-bg: #f8fafc;
-            --text-dark: #1e293b;
-            --text-light: #64748b;
-            --white: #ffffff;
-            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --accent-gold-hover: #b59226;
+            --sky-blue: #00a8e8;
+            --light-blue-bg: #f0f7ff;
+            --dark-bg: #0f172a;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Sarabun', sans-serif;
-            -webkit-tap-highlight-color: transparent; /* ลดรอยไฮไลต์เวลาแตะบน iOS/Android */
+            font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--light-bg);
-            color: var(--text-dark);
+            background-color: #f8fafc;
+            color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Top Bar */
+        /* Utility Classes */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center { text-align: center; }
+
+        /* Top Announcement Bar */
         .top-bar {
-            background-color: var(--dark-bg);
-            color: var(--white);
-            padding: 8px 5%;
+            background: linear-gradient(135deg, var(--dark-bg), var(--primary-dark));
+            color: #ffffff;
             font-size: 0.85rem;
+            padding: 8px 0;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        .top-bar-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .top-bar a {
-            color: #94a3b8;
-            text-decoration: none;
-            margin-left: 15px;
-            transition: 0.3s;
+        .top-bar-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
         }
 
-        .top-bar a:hover {
-            color: var(--white);
+        .top-bar-info span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .top-bar-info i {
+            color: var(--accent-gold);
+        }
+
+        .top-bar-social a {
+            color: #ffffff;
+            margin-left: 12px;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .top-bar-social a:hover {
+            color: var(--accent-gold);
         }
 
         /* Header & Navigation */
         header {
-            background: var(--white);
-            box-shadow: var(--shadow);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
             position: sticky;
             top: 0;
             z-index: 1000;
+            transition: var(--transition);
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 5%;
-            max-width: 1400px;
-            margin: 0 auto;
+            padding: 12px 20px;
         }
 
         .logo-box {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             text-decoration: none;
         }
 
         .logo-box img {
-            height: 60px;
+            height: 68px;
             width: auto;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.12));
+            transition: var(--transition);
+        }
+
+        .logo-box:hover img {
+            transform: scale(1.03);
         }
 
         .logo-text h1 {
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary-blue);
+            font-weight: 800;
             line-height: 1.2;
+            letter-spacing: -0.2px;
         }
 
         .logo-text p {
             font-size: 0.75rem;
-            color: var(--text-light);
-            font-weight: 500;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 0.3px;
         }
 
-        /* Desktop Menu */
+        /* Desktop Navigation Menu */
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 15px;
+            gap: 6px;
             align-items: center;
+        }
+
+        .nav-menu li {
+            position: relative;
         }
 
         .nav-menu a {
             text-decoration: none;
-            color: var(--text-dark);
+            color: var(--text-main);
             font-weight: 600;
-            font-size: 0.9rem;
-            padding: 8px 12px;
-            border-radius: 6px;
-            transition: all 0.3s ease;
+            font-size: 0.92rem;
+            padding: 10px 14px;
+            border-radius: 8px;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .nav-menu a:hover, .nav-menu a.active {
-            color: var(--primary-color);
-            background-color: rgba(0, 86, 179, 0.08);
+        .nav-menu a:hover, 
+        .nav-menu a.active {
+            color: var(--primary-blue);
+            background-color: var(--light-blue-bg);
         }
 
-        .btn-register {
-            background-color: var(--primary-color);
-            color: var(--white) !important;
-            padding: 8px 18px !important;
-            border-radius: 20px !important;
-            box-shadow: 0 4px 10px rgba(0, 86, 179, 0.3);
+        /* Dropdown Styling */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            min-width: 270px;
+            box-shadow: var(--shadow-lg);
+            border-radius: 12px;
+            padding: 10px 0;
+            list-style: none;
+            z-index: 1010;
+            border: 1px solid var(--border-color);
+            transform: translateY(10px);
+            opacity: 0;
+            transition: var(--transition);
         }
 
-        .btn-register:hover {
-            background-color: var(--primary-hover) !important;
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            transform: translateY(0);
+            opacity: 1;
         }
 
-        /* Hamburger Toggle Button for Mobile */
+        .dropdown-menu li a {
+            padding: 10px 18px;
+            color: var(--text-main);
+            font-size: 0.88rem;
+            font-weight: 500;
+            border-radius: 0;
+            justify-content: flex-start;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: var(--light-blue-bg);
+            color: var(--primary-blue);
+            padding-left: 22px;
+        }
+
+        /* Special Registration Button */
+        .btn-register-nav {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark)) !important;
+            color: #ffffff !important;
+            padding: 10px 20px !important;
+            border-radius: 30px !important;
+            box-shadow: 0 4px 12px rgba(0, 51, 160, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-register-nav:hover {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-hover)) !important;
+            color: var(--dark-bg) !important;
+            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+        }
+
         .mobile-toggle {
             display: none;
-            font-size: 1.5rem;
-            color: var(--primary-color);
+            font-size: 1.6rem;
+            color: var(--primary-blue);
             cursor: pointer;
-            padding: 5px;
+            padding: 8px;
+            border-radius: 8px;
+            background: var(--light-blue-bg);
         }
 
-        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(0, 86, 179, 0.9), rgba(17, 24, 39, 0.85)), url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-            color: var(--white);
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 33, 105, 0.92), rgba(15, 23, 42, 0.88)), 
+                        url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: #ffffff;
+            padding: 120px 0 100px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: #f8fafc;
+            clip-path: polygon(0 100%, 100% 100%, 100% 0);
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin: 0 auto;
             text-align: center;
-            padding: 80px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            backdrop-filter: blur(5px);
         }
 
         .hero h2 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            font-weight: 700;
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
-            font-size: 1.05rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
+            font-size: 1.15rem;
+            opacity: 0.92;
+            margin-bottom: 35px;
+            font-weight: 300;
+            line-height: 1.7;
         }
 
         .hero-btns {
             display: flex;
-            gap: 15px;
+            gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
+        /* Buttons */
         .btn {
-            padding: 12px 26px;
+            padding: 13px 32px;
             border-radius: 30px;
             text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
+            font-weight: 700;
+            font-size: 0.98rem;
+            transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
+            gap: 10px;
+            cursor: pointer;
+            border: none;
         }
 
-        .btn-primary {
+        .btn-gold {
             background-color: var(--accent-gold);
             color: var(--dark-bg);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
         }
 
-        .btn-primary:hover {
-            background-color: #c5a028;
+        .btn-gold:hover {
+            background-color: var(--accent-gold-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
         }
 
-        .btn-outline {
-            border: 2px solid var(--white);
-            color: var(--white);
+        .btn-outline-white {
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            background: transparent;
         }
 
-        .btn-outline:hover {
-            background-color: var(--white);
-            color: var(--primary-color);
+        .btn-outline-white:hover {
+            background-color: #ffffff;
+            color: var(--primary-blue);
+            transform: translateY(-3px);
         }
 
-        /* Services Grid */
-        .section-container {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 0 20px;
+        .stats-bar {
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 10px;
+        }
+
+        .stat-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--light-blue-bg);
+            color: var(--primary-blue);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .stat-info h4 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            line-height: 1;
+        }
+
+        .stat-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* Section Titles */
+        .section-title-wrap {
+            margin-bottom: 50px;
+        }
+
+        .section-subtitle {
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 6px;
         }
 
         .section-title {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .section-title h3 {
-            font-size: 1.8rem;
-            color: var(--primary-color);
+            font-size: 2.2rem;
+            color: var(--text-main);
+            font-weight: 800;
             position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
         }
 
-        .section-title h3::after {
+        .section-title::after {
             content: '';
-            width: 50px;
+            display: block;
+            width: 60px;
             height: 4px;
             background: var(--accent-gold);
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            margin: 12px auto 0;
             border-radius: 2px;
         }
 
+        /* Cards & Grid Systems */
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
 
-        .card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-            text-align: center;
+        .service-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 35px 28px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--sky-blue));
+            opacity: 0;
+            transition: var(--transition);
         }
 
-        .card-icon {
-            font-size: 2.2rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
         }
 
-        .card h4 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+        .service-card:hover::before {
+            opacity: 1;
         }
 
-        .card p {
-            color: var(--text-light);
+        .service-icon-box {
+            width: 65px;
+            height: 65px;
+            background: var(--light-blue-bg);
+            color: var(--primary-blue);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 22px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon-box {
+            background: var(--primary-blue);
+            color: #ffffff;
+        }
+
+        .service-card h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-link {
+            color: var(--primary-blue);
+            font-weight: 700;
+            text-decoration: none;
             font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .card-link:hover {
+            color: var(--accent-gold);
+            gap: 10px;
+        }
+
+        /* News & Knowledge Section Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background: #ffffff;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--primary-blue);
+            color: #ffffff;
+            border-color: var(--primary-blue);
+        }
+
+        /* News Cards */
+        .news-card {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .news-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .news-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(0, 51, 160, 0.85);
+            backdrop-filter: blur(4px);
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .news-body {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .news-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .news-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .news-excerpt {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        /* Download Table / Cards */
+        .download-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .download-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+            border-radius: 8px;
+        }
+
+        .download-item:last-child {
+            border-bottom: none;
+        }
+
+        .download-item:hover {
+            background-color: var(--light-blue-bg);
+        }
+
+        .download-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .download-icon {
+            font-size: 1.8rem;
+            color: #e11d48;
+        }
+
+        .download-text h5 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .download-text p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .btn-download {
+            background: var(--light-blue-bg);
+            color: var(--primary-blue);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .btn-download:hover {
+            background: var(--primary-blue);
+            color: #ffffff;
+        }
+
+        /* Member Registration Promo Section */
+        .promo-banner {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+            border-radius: 24px;
+            padding: 50px 40px;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .promo-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 350px;
+            height: 350px;
+            background: rgba(212, 175, 55, 0.15);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .promo-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-text h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .promo-text p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            max-width: 650px;
         }
 
         /* Footer */
         footer {
             background-color: var(--dark-bg);
-            color: var(--white);
-            padding: 40px 5% 20px;
-            margin-top: 60px;
+            color: #ffffff;
+            padding: 70px 0 25px;
+            margin-top: 80px;
+            position: relative;
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--primary-blue));
+        }
+
+        .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid #374151;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid #334155;
+        }
+
+        .footer-logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-box img {
+            height: 55px;
+            width: auto;
         }
 
         .footer-col h4 {
-            font-size: 1.1rem;
-            margin-bottom: 15px;
+            font-size: 1.15rem;
+            margin-bottom: 22px;
             color: var(--accent-gold);
+            font-weight: 700;
+            position: relative;
         }
 
         .footer-col p, .footer-col li {
-            color: #9ca3af;
+            color: #94a3b8;
             font-size: 0.9rem;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             list-style: none;
+        }
+
+        .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: #ffffff;
+            padding-left: 5px;
+        }
+
+        .contact-list li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .contact-list i {
+            color: var(--accent-gold);
+            margin-top: 4px;
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 20px;
-            font-size: 0.8rem;
-            color: #6b7280;
+            padding-top: 25px;
+            font-size: 0.85rem;
+            color: #64748b;
         }
 
-        /* Responsive Breakpoints (Mobile Android & iOS / Tablets) */
+        /* Modal Details Window */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-box {
+            background: #ffffff;
+            border-radius: 20px;
+            max-width: 650px;
+            width: 100%;
+            padding: 35px;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--text-main);
+        }
+
+        /* Responsive Breakpoints (Android, iOS & Tablets) */
         @media (max-width: 992px) {
             .mobile-toggle {
                 display: block;
+            }
+
+            .top-bar-info span:not(:first-child) {
+                display: none;
             }
 
             .nav-menu {
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 280px;
+                width: 300px;
                 height: 100vh;
-                background-color: var(--white);
+                background-color: #ffffff;
                 flex-direction: column;
                 justify-content: flex-start;
                 align-items: flex-start;
-                padding: 80px 25px 30px;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-                transition: right 0.3s ease-in-out;
+                padding: 90px 24px 40px;
+                box-shadow: var(--shadow-lg);
+                transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
                 z-index: 999;
+                overflow-y: auto;
             }
 
             .nav-menu.active {
@@ -340,144 +896,437 @@
 
             .nav-menu li {
                 width: 100%;
-                margin-bottom: 10px;
+                margin-bottom: 4px;
             }
 
             .nav-menu a {
-                display: block;
+                display: flex;
+                justify-content: space-between;
                 width: 100%;
-                padding: 10px 15px;
-                font-size: 1rem;
+                padding: 12px 14px;
+                font-size: 0.98rem;
             }
 
-            .top-bar {
-                flex-direction: column;
-                gap: 5px;
-                text-align: center;
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border: none;
+                background-color: var(--light-blue-bg);
+                padding-left: 10px;
+                border-radius: 8px;
+                transform: none;
+                opacity: 1;
+                margin-top: 4px;
             }
 
-            .hero h2 {
-                font-size: 1.8rem;
+            .dropdown.open .dropdown-menu {
+                display: block;
             }
 
-            .hero p {
-                font-size: 0.95rem;
-            }
-
-            .logo-box img {
-                height: 50px;
-            }
-
-            .logo-text h1 {
-                font-size: 1rem;
-            }
+            .hero h2 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .logo-box img { height: 52px; }
+            .logo-text h1 { font-size: 1.05rem; }
+            .promo-content { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Info Bar -->
+    <!-- Top Bar -->
     <div class="top-bar">
-        <div><i class="fa-solid fa-location-dot"><a href="https://maps.app.goo.gl/yMw3ZXhK37aziUWH6"></i> ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</a></div>
-        <div>
-            <a href="https://www.facebook.com/jattanun"><i class="fa-brands fa-facebook"></i> Facebook</a>
-            <a href="https://lin.ee/vZ5YhGy"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/th.png" alt="เพิ่มเพื่อน" height="36" border="0"></a>
+        <div class="container top-bar-content">
+            <div class="top-bar-info">
+                <span><i class="fa-solid fa-location-dot"></i> ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</span>
+                <span><i class="fa-solid fa-envelope"></i> cdcco.deaf@gmail.com</span>
+                <span><i class="fa-solid fa-phone"></i> 0631043000 (ติดต่อผ่าน SMS/LINE)</span>
+            </div>
+            <div class="top-bar-social">
+                <a href="https://www.facebook.com/jattanun" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://lin.ee/vZ5YhGy"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/th.png" alt="เพิ่มเพื่อน" height="36" border="0"></a>
+                <a href="#" title="YouTube Channel"><i class="fa-brands fa-youtube"></i></a>
+            </div>
         </div>
     </div>
 
-    <!-- Header & Navigation -->
-    <header>
-        <div class="nav-container">
+    <!-- Main Navigation Header -->
+    <header id="main-header">
+        <div class="container nav-container">
             <a href="#" class="logo-box">
-                <!-- ไฟล์โลโก้จริงจากรูปภาพที่แนบ[cite: 1] -->
-                <img src="https://i.postimg.cc/bJHrZZ3R/loko-ch-xs-n-ange-n.png" alt="โลโก้ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา">
+                <!-- โลโก้จริงจากรูปภาพที่แนบ -->
+                <img src="https://i.postimg.cc/bJHrZZ3R/loko-ch-xs-n-ange-n.png" alt="โลโก้ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา" onerror="this.src='https://placehold.co/120x120/0033a0/ffffff?text=Deaf+Club'">
                 <div class="logo-text">
                     <h1>ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</h1>
                     <p>CLUB OF THE DEAF IN CHACHOENGSAO</p>
                 </div>
             </a>
 
-            <!-- ปุ่มเปิดเมนูมือถือ (Hamburger Icon) -->
+            <!-- Mobile Hamburger Button -->
             <div class="mobile-toggle" id="mobile-menu-btn">
                 <i class="fa-solid fa-bars"></i>
             </div>
 
-            <!-- เมนูหลักตามโจทย์ -->
+            <!-- Navigation Links -->
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="#" class="active">เกี่ยวกับชมรม</a></li>
-                <li><a href="#">หน่วยบริการ</a></li>
-                <li><a href="#">ข่าวสาร</a></li>
-                <li><a href="#">คลังข้อมูล</a></li>
-                <li><a href="#">กิจกรรม</a></li>
-                <li><a href="#">ดาวน์โหลด</a></li>
-                <li><a href="https://shorturl.asia/l8tqfl" class="btn-register"><i class="fa-solid fa-user-plus"></i> ระบบทะเบียนสมาชิก</a></li>
+                <li><a href="#about" class="active"><i class="fa-solid fa-house"></i> เกี่ยวกับชมรม</a></li>
+                
+                <!-- Dropdown Menu: หน่วยบริการ / เว็บอื่นๆ -->
+                <li class="dropdown" id="dropdown-btn">
+                    <a href="javascript:void(0);">
+                        <span><i class="fa-solid fa-handshake"></i> หน่วยบริการ / เว็บอื่นๆ</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://www.dep.go.th" target="_blank"><i class="fa-solid fa-building-columns"></i> กรมส่งเสริมและพัฒนาคุณภาพชีวิตคนพิการ</a></li>
+                        <li><a href="https://www.nadt.or.th" target="_blank"><i class="fa-solid fa-hands-asl-interpreting"></i> สมาคมคนหูหนวกแห่งประเทศไทย</a></li>
+                        <li><a href="https://www.chachoengsao.go.th" target="_blank"><i class="fa-solid fa-landmark"></i> ศาลากลางจังหวัดฉะเชิงเทรา</a></li>
+                        <li><a href="#services"><i class="fa-solid fa-headset"></i> ศูนย์บริการล่ามภาษามือฉะเชิงเทรา</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#news"><i class="fa-solid fa-newspaper"></i> ข่าวสาร</a></li>
+                <li><a href="#knowledge"><i class="fa-solid fa-book-open"></i> คลังข้อมูล</a></li>
+                <li><a href="#activities"><i class="fa-solid fa-calendar-check"></i> กิจกรรม</a></li>
+                <li><a href="#downloads"><i class="fa-solid fa-file-arrow-down"></i> ดาวน์โหลด</a></li>
+                <li><a href="#register-system" class="btn-register-nav"><i class="fa-solid fa-user-plus"></i> ระบบทะเบียนสมาชิก</a></li>
             </ul>
         </div>
     </header>
 
     <!-- Hero Banner -->
-    <section class="hero">
-        <h2>ยินดีต้อนรับสู่ ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</h2>
-        <p>ศูนย์กลางส่งเสริมสิทธิ สวัสดิการ การสื่อสารภาษามือ และพัฒนาคุณภาพชีวิตของผู้พิการทางการได้ยินในจังหวัดฉะเชิงเทรา</p>
-        <div class="hero-btns">
-            <a href="#" class="btn btn-primary"><i class="fa-solid fa-id-card"></i> ลงทะเบียนสมาชิก</a>
-            <a href="#" class="btn btn-outline"><i class="fa-solid fa-hands-asl-interpreting"></i> บริการล่ามภาษามือ</a>
+    <section class="hero" id="about">
+        <div class="container hero-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-hands-asl-interpreting"></i> ศูนย์กลางการสนับสนุนผู้พิการทางการได้ยิน
+            </div>
+            <h2>ยกระดับคุณภาพชีวิต ส่งเสริมสิทธิ<br>และภาษามือเพื่อคนหูหนวกแปดริ้ว</h2>
+            <p>ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา มุ่งมั่นสร้างสังคมแห่งการยอมรับ ความเท่าเทียม การเข้าถึงข้อมูลข่าวสาร บริการล่ามภาษามือ และส่งเสริมอาชีพเพื่อความยั่งยืน</p>
+            <div class="hero-btns">
+                <a href="#register-system" class="btn btn-gold"><i class="fa-solid fa-address-card"></i> ลงทะเบียนสมาชิกชมรม</a>
+                <a href="#services" class="btn btn-outline-white"><i class="fa-solid fa-hands-asl-interpreting"></i> บริการล่ามภาษามือ</a>
+            </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="section-container">
-        <div class="section-title">
-            <h3>หน่วยบริการ & ภารกิจหลัก</h3>
+    <!-- Quick Stats Bar -->
+    <div class="container stats-bar">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+                <div class="stat-info">
+                    <h4>500+</h4>
+                    <p>สมาชิกในเครือข่าย</p>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-hands-asl-interpreting"></i></div>
+                <div class="stat-info">
+                    <h4>100%</h4>
+                    <p>การเข้าถึงบริการภาษามือ</p>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                <div class="stat-info">
+                    <h4>24+</h4>
+                    <p>โครงการกิจกรรมต่อปี</p>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fa-solid fa-award"></i></div>
+                <div class="stat-info">
+                    <h4>11</h4>
+                    <p>อำเภอครอบคลุมพื้นที่</p>
+                </div>
+            </div>
         </div>
-        <div class="grid-3">
-            <div class="card">
-                <div class="card-icon"><i class="fa-solid fa-hands-asl-interpreting"></i></div>
-                <h4>บริการล่ามภาษามือ</h4>
-                <p>จัดส่งและประสานงานล่ามภาษามือสำหรับติดต่อราชการ โรงพยาบาล หรือกิจกรรมต่างๆ</p>
+    </div>
+
+    <!-- Services Section -->
+    <section class="section-padding" id="services">
+        <div class="container">
+            <div class="section-title-wrap text-center">
+                <span class="section-subtitle">Our Services & Mission</span>
+                <h3 class="section-title">หน่วยบริการและภารกิจหลัก</h3>
             </div>
-            <div class="card">
-                <div class="card-icon"><i class="fa-solid fa-address-card"></i></div>
-                <h4>ระบบทะเบียนสมาชิก</h4>
-                <p>บริการขึ้นทะเบียน ออกบัตรสมาชิก และดูแลสิทธิประโยชน์ต่างๆ ของคนหูหนวกในจังหวัด</p>
+            <div class="grid-3">
+                <div class="service-card">
+                    <div class="service-icon-box"><i class="fa-solid fa-hands-asl-interpreting"></i></div>
+                    <h4>บริการล่ามภาษามือ</h4>
+                    <p>อำนวยความสะดวกในการจัดส่งล่ามภาษามือ สำหรับติดต่อหน่วยงานราชการ โรงพยาบาล สถานศึกษา และสถานประกอบการ</p>
+                    <a href="javascript:void(0);" onclick="openModal('บริการล่ามภาษามือ', 'สามารถแจ้งความประสงค์ขอใช้บริการล่ามภาษามือล่วงหน้าอย่างน้อย 3 วัน เพื่อติดต่อหน่วยงานราชการหรือพบแพทย์ โดยประสานงานผ่าน LINE Official หรือ SMS ของชมรม')" class="card-link">รายละเอียดบริการ <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon-box"><i class="fa-solid fa-id-card"></i></div>
+                    <h4>สวัสดิการและทะเบียนสมาชิก</h4>
+                    <p>ดูแลการขึ้นทะเบียนสมาชิก ออกบัตรประจำตัวชมรม แนะนำสิทธิคนพิการ และการขอรับสวัสดิการตามกฎหมาย</p>
+                    <a href="#register-system" class="card-link">เข้าสู่ระบบทะเบียน <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon-box"><i class="fa-solid fa-briefcase"></i></div>
+                    <h4>ส่งเสริมอาชีพและการฝึกอบรม</h4>
+                    <p>จัดโครงการอบรมทักษะการทำงาน เสริมสร้างอาชีพแก่คนหูหนวก พร้อมประสานงานการจ้างงานตามมาตรา 33 และ 35</p>
+                    <a href="javascript:void(0);" onclick="openModal('โครงการส่งเสริมอาชีพ', 'ชมรมฯ มีการจัดอบรมอาชีพเป็นประจำทุกไตรมาส เช่น งานหัตถกรรม งานคอมพิวเตอร์ และการส่งเสริมผู้ประกอบการหูหนวกรายย่อย')" class="card-link">ดูโครงการอาชีพ <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
             </div>
-            <div class="card">
-                <div class="card-icon"><i class="fa-solid fa-briefcase"></i></div>
-                <h4>ส่งเสริมอาชีพ & การฝึกอบรม</h4>
-                <p>จัดอบรมทักษะอาชีพ และการใช้ภาษามือไทยเพื่อพัฒนาคุณภาพชีวิตอย่างยั่งยืน</p>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="section-padding" id="news" style="background-color: var(--light-blue-bg);">
+        <div class="container">
+            <div class="section-title-wrap text-center">
+                <span class="section-subtitle">Updates & PR</span>
+                <h3 class="section-title">ข่าวประชาสัมพันธ์ล่าสุด</h3>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="tab-btn active"> ทั้งหมด</button>
+                <button class="tab-btn"> ข่าวชมรม</button>
+                <button class="tab-btn"> ประกาศสิทธิประโยชน์</button>
+                <button class="tab-btn"> ข่าวสารแปดริ้ว</button>
+            </div>
+
+            <div class="grid-3">
+                <!-- News 1 -->
+                <div class="news-card">
+                    <div style="position:relative;">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="ประชุมสมาชิก" class="news-img">
+                        <span class="news-category">ข่าวชมรม</span>
+                    </div>
+                    <div class="news-body">
+                        <div class="news-date"><i class="fa-regular fa-calendar"></i> 10 ตุลาคม 2026</div>
+                        <h4 class="news-title">ขอเชิญเข้าร่วมการประชุมใหญ่สามัญประจำปี ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</h4>
+                        <p class="news-excerpt">ขอเรียนเชิญสมาชิกทุกท่านเข้าร่วมฟังรายงานผลการดำเนินงานและร่วมลงมติแนวทางการพัฒนาชมรม ณ ศาลากลางจังหวัด...</p>
+                        <a href="javascript:void(0);" onclick="openModal('ประชุมใหญ่สามัญประจำปี', 'กำหนดการประชุมใหญ่สามัญประจำปี ณ ห้องประชุมศาลากลางจังหวัดฉะเชิงเทรา เวลา 09.00 - 15.00 น. มีบริการล่ามภาษามือตลอดการประชุม')" class="card-link">อ่านต่อ <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- News 2 -->
+                <div class="news-card">
+                    <div style="position:relative;">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80" alt="อบรมภาษามือ" class="news-img">
+                        <span class="news-category">อบรมพัฒนาทักษะ</span>
+                    </div>
+                    <div class="news-body">
+                        <div class="news-date"><i class="fa-regular fa-calendar"></i> 25 กันยายน 2026</div>
+                        <h4 class="news-title">เปิดรับสมัคร อบรมการใช้ภาษามือไทยขั้นพื้นฐานสำหรับสถานประกอบการ</h4>
+                        <p class="news-excerpt">โครงการเพิ่มประสิทธิภาพการสื่อสารในองค์กร เพื่อสร้างสภาพแวดล้อมการทำงานที่เอื้อต่อผู้พิการทางการได้ยิน...</p>
+                        <a href="javascript:void(0);" onclick="openModal('อบรมภาษามือไทยขั้นพื้นฐาน', 'เปิดรับสมัครหน่วยงานและสถานประกอบการที่สนใจส่งบุคลากรเข้าร่วมเรียนรู้ภาษามือไทยเพื่อการทำงาน ร่วมมือกับสมาคมคนหูหนวกแห่งประเทศไทย')" class="card-link">อ่านต่อ <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- News 3 -->
+                <div class="news-card">
+                    <div style="position:relative;">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="สิทธิประโยชน์" class="news-img">
+                        <span class="news-category">ประกาศสิทธิ</span>
+                    </div>
+                    <div class="news-body">
+                        <div class="news-date"><i class="fa-regular fa-calendar"></i> 12 กันยายน 2026</div>
+                        <h4 class="news-title">อัปเดตสิทธิประโยชน์เบี้ยความพิการและการยื่นเรื่องต่ออายุบัตรประจำตัว</h4>
+                        <p class="news-excerpt">สิทธิประโยชน์ใหม่สำหรับผู้พิการทางการได้ยิน และช่องทางการต่ออายุบัตรประจำตัวคนพิการแบบออนไลน์...</p>
+                        <a href="javascript:void(0);" onclick="openModal('สิทธิประโยชน์เบี้ยความพิการ', 'ผู้พิการทางการได้ยินสามารถตรวจสอบสิทธิการรับเบี้ยความพิการเพิ่มเติม และการลงทะเบียนขอรับอุปกรณ์เครื่องช่วยฟังฟรีจาก พก.')" class="card-link">อ่านต่อ <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Knowledge Base Section -->
+    <section class="section-padding" id="knowledge">
+        <div class="container">
+            <div class="section-title-wrap text-center">
+                <span class="section-subtitle">Resources & Knowledge</span>
+                <h3 class="section-title">คลังข้อมูลและสิทธิควรรู้</h3>
+            </div>
+            <div class="grid-3">
+                <div class="service-card">
+                    <div class="service-icon-box" style="color: #10b981; background: #ecfdf5;"><i class="fa-solid fa-gavel"></i></div>
+                    <h4>พ.ร.บ. ส่งเสริมคุณภาพชีวิตคนพิการ</h4>
+                    <p>สรุปสาระสำคัญของกฎหมาย พ.ร.บ. ส่งเสริมและพัฒนาคุณภาพชีวิตคนพิการ พ.ศ. 2550 และสิทธิประโยชน์ตามมาตราต่างๆ</p>
+                    <a href="javascript:void(0);" onclick="openModal('พ.ร.บ. ส่งเสริมคุณภาพชีวิตคนพิการ', 'รวมข้อมูลข้อกฎหมายที่คนหูหนวกควรทราบ สิทธิในการได้รับการคุ้มครองจากการเลือกปฏิบัติ และการเข้าถึงสิ่งอำนวยความสะดวก')" class="card-link">อ่านบทความ <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon-box" style="color: #f59e0b; background: #fffbeb;"><i class="fa-solid fa-hands"></i></div>
+                    <h4>คลังคำศัพท์ภาษามือไทย</h4>
+                    <p>วิดีโอและภาพประกอบคลังคำศัพท์ภาษามือไทยพื้นฐาน คำศัพท์เฉพาะทางด้านการแพทย์ และคำศัพท์ที่ใช้ในชีวิตประจำวัน</p>
+                    <a href="javascript:void(0);" onclick="openModal('คลังคำศัพท์ภาษามือไทย', 'เรียนรู้ภาษามือไทยผ่านคลิปวิดีโอสาธิต แบ่งเป็นหมวดหมู่ หมวดหมอ/โรงพยาบาล, หมวดสถานที่ราชการ และหมวดการสื่อสารทั่วไป')" class="card-link">เข้าสู่คลังวิดีโอ <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon-box" style="color: #6366f1; background: #eef2ff;"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <h4>การดูแลสุขภาพและการเข้าถึงแพทย์</h4>
+                    <p>คู่มือแนะนำการเตรียมตัวสำหรับคนหูหนวกก่อนไปพบแพทย์ พร้อมแบบฟอร์มภาษามือเบื้องต้นสำหรับอาการป่วย</p>
+                    <a href="javascript:void(0);" onclick="openModal('คู่มือพบแพทย์สำหรับคนหูหนวก', 'ข้อแนะนำขั้นตอนการขอใช้บริการล่ามภาษามือทางไกลผ่านแอปพลิเคชันขณะพบแพทย์ในโรงพยาบาลฉะเชิงเทรา')" class="card-link">ดาวน์โหลดคู่มือ <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Gallery Section -->
+    <section class="section-padding" id="activities" style="background-color: var(--light-blue-bg);">
+        <div class="container">
+            <div class="section-title-wrap text-center">
+                <span class="section-subtitle">Events Gallery</span>
+                <h3 class="section-title">ภาพกิจกรรมชมรม</h3>
+            </div>
+            <div class="grid-3">
+                <div class="service-card" style="padding:0; overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="กิจกรรมจิตอาสา" style="width:100%; height:200px; object-fit:cover;">
+                    <div style="padding:20px;">
+                        <h4>กิจกรรมจิตอาสาคนหูหนวกพัฒนาชุมชน</h4>
+                        <p style="font-size:0.85rem; color:var(--text-muted);">ร่วมมือกับจังหวัดฉะเชิงเทราจัดกิจกรรมพัฒนาพื้นที่สาธารณะ ณ วัดหลวงพ่อโสธร</p>
+                    </div>
+                </div>
+                <div class="service-card" style="padding:0; overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80" alt="สัมมนาภาษามือ" style="width:100%; height:200px; object-fit:cover;">
+                    <div style="padding:20px;">
+                        <h4>โครงการอบรมเครือข่ายเยาวชนหูหนวก</h4>
+                        <p style="font-size:0.85rem; color:var(--text-muted);">สัมมนาเชิงปฏิบัติการเสริมสร้างภาวะผู้นำสำหรับเยาวชนหูหนวกในจังหวัดฉะเชิงเทรา</p>
+                    </div>
+                </div>
+                <div class="service-card" style="padding:0; overflow:hidden;">
+                    <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=600&q=80" alt="งานกีฬา" style="width:100%; height:200px; object-fit:cover;">
+                    <div style="padding:20px;">
+                        <h4>การแข่งขันกีฬาสานสัมพันธ์คนหูหนวก</h4>
+                        <p style="font-size:0.85rem; color:var(--text-muted);">กิจกรรมเชื่อมความสัมพันธ์ระหว่างสมาชิกชมรมคนหูหนวกในภาคตะวันออก</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Downloads Section -->
+    <section class="section-padding" id="downloads">
+        <div class="container">
+            <div class="section-title-wrap text-center">
+                <span class="section-subtitle">Downloads & Forms</span>
+                <h3 class="section-title">เอกสารและแบบฟอร์มดาวน์โหลด</h3>
+            </div>
+            <div class="download-box">
+                <div class="download-item">
+                    <div class="download-info">
+                        <i class="fa-solid fa-file-pdf download-icon"></i>
+                        <div class="download-text">
+                            <h5>แบบฟอร์มสมัครสมาชิกชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</h5>
+                            <p>PDF • ขนาด 1.2 MB • อัปเดตเมื่อ มกราคม 2026</p>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0);" onclick="alert('ระบบกำลังดาวน์โหลดแบบฟอร์มสมัครสมาชิก')" class="btn-download"><i class="fa-solid fa-download"></i> ดาวน์โหลด</a>
+                </div>
+
+                <div class="download-item">
+                    <div class="download-info">
+                        <i class="fa-solid fa-file-pdf download-icon"></i>
+                        <div class="download-text">
+                            <h5>แบบคำขอใช้บริการล่ามภาษามือ (ฉบับทางการ)</h5>
+                            <p>PDF • ขนาด 850 KB • อัปเดตเมื่อ มีนาคม 2026</p>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0);" onclick="alert('ระบบกำลังดาวน์โหลดแบบฟอร์มคำขอใช้บริการล่ามภาษามือ')" class="btn-download"><i class="fa-solid fa-download"></i> ดาวน์โหลด</a>
+                </div>
+
+                <div class="download-item">
+                    <div class="download-info">
+                        <i class="fa-solid fa-file-pdf download-icon"></i>
+                        <div class="download-text">
+                            <h5>หนังสือยินยอมการใช้ข้อมูลส่วนบุคคล (PDPA Consent Form)</h5>
+                            <p>PDF • ขนาด 520 KB • อัปเดตเมื่อ กุมภาพันธ์ 2026</p>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0);" onclick="alert('ระบบกำลังดาวน์โหลดแบบฟอร์ม PDPA')" class="btn-download"><i class="fa-solid fa-download"></i> ดาวน์โหลด</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Member Registration CTA Banner -->
+    <section class="container" id="register-system" style="margin-bottom: 60px;">
+        <div class="promo-banner">
+            <div class="promo-content">
+                <div class="promo-text">
+                    <h3>เว็บไซต์ระบบทะเบียนสมาชิกออนไลน์</h3>
+                    <p>ระบบฐานข้อมูลสมาชิกชมรมคนหูหนวกจังหวัดฉะเชิงเทรา ลงทะเบียนออนไลน์เพื่อรับบัตรสมาชิกดิจิทัล อัปเดตสิทธิประโยชน์ และขอรับบริการล่ามภาษามือได้สะดวกรวดเร็ว</p>
+                </div>
+                <div>
+                    <a href="javascript:void(0);" onclick="openModal('ระบบทะเบียนสมาชิก', 'ยินดีต้อนรับสู่ระบบทะเบียนสมาชิกออนไลน์ ท่านสามารถกรอกข้อมูลส่วนตัว แนบสำเนาบัตรประจำตัวคนพิการ เพื่อออกบัตรสมาชิกชมรมแบบดิจิทัล')" class="btn btn-gold" style="white-space:nowrap; padding: 15px 35px; font-size:1.1rem;">
+                        <i class="fa-solid fa-user-plus"></i> เข้าสู่ระบบทะเบียน
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-col">
-                <h4>ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</h4>
-                <p>มุ่งมั่นสร้างสังคมแห่งความเท่าเทียม เพื่อคนหูหนวกและผู้พิการทางการได้ยินทุกคน</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col" style="grid-column: span 1.5;">
+                    <div class="footer-logo-box">
+                        <img src="โลโก้ ชื่อสีน้ำเงิน.jpg" alt="โลโก้ชมรม" onerror="this.src='https://placehold.co/100x100/0033a0/ffffff?text=Deaf+Club'">
+                        <div>
+                            <h4 style="margin-bottom:0; color:#fff;">ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</h4>
+                            <p style="font-size:0.75rem; margin:0; color:#94a3b8;">CLUB OF THE DEAF IN CHACHOENGSAO</p>
+                        </div>
+                    </div>
+                    <p>ศูนย์กลางส่งเสริมศักยภาพ สิทธิ สวัสดิการ และการสื่อสารเพื่อผู้พิการทางการได้ยินในจังหวัดฉะเชิงเทรา มุ่งสร้างสังคมแห่งความเท่าเทียม</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>เมนูด่วน</h4>
+                    <li><a href="#about"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> เกี่ยวกับชมรม</a></li>
+                    <li><a href="#services"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> บริการล่ามภาษามือ</a></li>
+                    <li><a href="#news"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> ข่าวสารและกิจกรรม</a></li>
+                    <li><a href="#downloads"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> แบบฟอร์มดาวน์โหลด</a></li>
+                    <li><a href="#register-system"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> ระบบลงทะเบียนสมาชิก</a></li>
+                </div>
+
+                <div class="footer-col">
+                    <h4>หน่วยงานภาคีเครือข่าย</h4>
+                    <li><a href="https://www.dep.go.th" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.7rem;"></i> กรมส่งเสริมคุณภาพชีวิตคนพิการ</a></li>
+                    <li><a href="https://www.nadt.or.th" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.7rem;"></i> สมาคมคนหูหนวกแห่งประเทศไทย</a></li>
+                    <li><a href="https://www.chachoengsao.go.th" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.7rem;"></i> จังหวัดฉะเชิงเทรา</a></li>
+                </div>
+
+                <div class="footer-col">
+                    <h4>ติดต่อชมรม</h4>
+                    <ul class="contact-list">
+                        <li><i class="fa-solid fa-location-dot"></i> <span>จังหวัดฉะเชิงเทรา 24000</span></li>
+                        <li><i class="fa-solid fa-comment-sms"></i> <span>ติดต่อผ่าน LINE / ข้อความ SMS</span></li>
+                        <li><i class="fa-solid fa-envelope"></i> <span>contact@deaf-chachoengsao.or.th</span></li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-col">
-                <h4>เมนูด่วน</h4>
-                <li><a href="#" style="color:#9ca3af; text-decoration:none;">ข่าวสารประชาสัมพันธ์</a></li>
-                <li><a href="#" style="color:#9ca3af; text-decoration:none;">คลังข้อมูลความรู้</a></li>
-                <li><a href="#" style="color:#9ca3af; text-decoration:none;">ดาวน์โหลดแบบฟอร์ม</a></li>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา (Club of the Deaf in Chachoengsao). All Rights Reserved.</p>
             </div>
-            <div class="footer-col">
-                <h4>ติดต่อเรา</h4>
-                <p><i class="fa-solid fa-phone"></i> ติดต่อผ่าน LINE / SMS</p>
-                <p><i class="fa-solid fa-envelope"></i>cdcco.deaf@gmail.com</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- JavaScript สคริปต์ควบคุมเมนูสำหรับมือถือ Android / iOS -->
+    <!-- Modal Box for Interactive Popups -->
+    <div class="modal-overlay" id="infoModal">
+        <div class="modal-box">
+            <span class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></span>
+            <h3 id="modalTitle" style="color:var(--primary-blue); font-size:1.5rem; margin-bottom:15px;">หัวข้อข้อมูล</h3>
+            <div id="modalBody" style="color:var(--text-main); font-size:1rem; line-height:1.7;">
+                รายละเอียดข้อมูล...
+            </div>
+            <div style="margin-top:25px; text-align:right;">
+                <button class="btn btn-gold" onclick="closeModal()">ตกลง / ปิดหน้าต่าง</button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // DOM Elements
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const navMenu = document.getElementById('nav-menu');
+        const dropdownBtn = document.getElementById('dropdown-btn');
+        const infoModal = document.getElementById('infoModal');
 
+        // Mobile Menu Drawer Toggle (Android & iOS Responsive)
         mobileBtn.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             const icon = mobileBtn.querySelector('i');
@@ -490,13 +1339,60 @@
             }
         });
 
-        // ปิดเมนูอัตโนมัติเมื่อกดคลิกเลือกเมนูในมือถือ
-        document.querySelectorAll('.nav-menu a').forEach(link => {
+        // Dropdown Toggle for Touch Screen Mobile devices
+        dropdownBtn.addEventListener('click', (e) => {
+            if (window.innerWidth <= 992) {
+                dropdownBtn.classList.toggle('open');
+            }
+        });
+
+        // Auto Close Mobile Menu when clicking a nav link
+        document.querySelectorAll('.nav-menu a:not(.dropdown > a)').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
-                mobileBtn.querySelector('i').classList.remove('fa-xmark');
-                mobileBtn.querySelector('i').classList.add('fa-bars');
+                const icon = mobileBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
             });
+        });
+
+        // News Tab Filtering Logic
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Modal Controls
+        function openModal(title, content) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBody').innerText = content;
+            infoModal.classList.add('active');
+        }
+
+        function closeModal() {
+            infoModal.classList.remove('active');
+        }
+
+        // Close Modal when clicking outside the box
+        window.addEventListener('click', (e) => {
+            if (e.target === infoModal) {
+                closeModal();
+            }
+        });
+
+        // Sticky Header Elevation Effect on Scroll
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 10px 30px rgba(0,0,0,0.12)';
+            } else {
+                header.style.boxShadow = 'var(--shadow-sm)';
+            }
         });
     </script>
 </body>
