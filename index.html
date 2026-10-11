@@ -159,7 +159,7 @@
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 6px;
+            gap: 4px;
             align-items: center;
         }
 
@@ -171,13 +171,14 @@
             text-decoration: none;
             color: var(--text-main);
             font-weight: 600;
-            font-size: 0.92rem;
-            padding: 10px 14px;
+            font-size: 0.9rem;
+            padding: 10px 12px;
             border-radius: 8px;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
+            cursor: pointer;
         }
 
         .nav-menu a:hover, 
@@ -193,10 +194,10 @@
             top: 100%;
             left: 0;
             background-color: #ffffff;
-            min-width: 270px;
+            min-width: 250px;
             box-shadow: var(--shadow-lg);
             border-radius: 12px;
-            padding: 10px 0;
+            padding: 8px 0;
             list-style: none;
             z-index: 1010;
             border: 1px solid var(--border-color);
@@ -211,29 +212,37 @@
             opacity: 1;
         }
 
+        .dropdown-menu li {
+            width: 100%;
+        }
+
         .dropdown-menu li a {
-            padding: 10px 18px;
+            padding: 10px 16px;
             color: var(--text-main);
             font-size: 0.88rem;
             font-weight: 500;
             border-radius: 0;
-            justify-content: flex-start;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .dropdown-menu li a:hover {
             background-color: var(--light-blue-bg);
             color: var(--primary-blue);
-            padding-left: 22px;
+            padding-left: 20px;
         }
 
         /* Special Registration Button */
         .btn-register-nav {
             background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark)) !important;
             color: #ffffff !important;
-            padding: 10px 20px !important;
+            padding: 10px 18px !important;
             border-radius: 30px !important;
             box-shadow: 0 4px 12px rgba(0, 51, 160, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-left: 8px;
         }
 
         .btn-register-nav:hover {
@@ -528,33 +537,6 @@
             gap: 10px;
         }
 
-        /* News & Knowledge Section Filter Tabs */
-        .filter-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 35px;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            padding: 8px 20px;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-            background: #ffffff;
-            color: var(--text-muted);
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .tab-btn.active, .tab-btn:hover {
-            background: var(--primary-blue);
-            color: #ffffff;
-            border-color: var(--primary-blue);
-        }
-
         /* News Cards */
         .news-card {
             background: #ffffff;
@@ -623,7 +605,7 @@
             flex-grow: 1;
         }
 
-        /* Download Table / Cards */
+        /* Download Box */
         .download-box {
             background: #ffffff;
             border-radius: 16px;
@@ -688,7 +670,7 @@
             color: #ffffff;
         }
 
-        /* Member Registration Promo Section */
+        /* Promo Banner */
         .promo-banner {
             background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
             border-radius: 24px;
@@ -816,7 +798,7 @@
             color: #64748b;
         }
 
-        /* Modal Details Window */
+        /* Modal Overlay */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -863,7 +845,6 @@
             color: var(--text-main);
         }
 
-        /* Responsive Breakpoints (Android, iOS & Tablets) */
         @media (max-width: 992px) {
             .mobile-toggle {
                 display: block;
@@ -877,13 +858,13 @@
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 300px;
+                width: 310px;
                 height: 100vh;
                 background-color: #ffffff;
                 flex-direction: column;
                 justify-content: flex-start;
                 align-items: flex-start;
-                padding: 90px 24px 40px;
+                padding: 85px 20px 40px;
                 box-shadow: var(--shadow-lg);
                 transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
                 z-index: 999;
@@ -896,7 +877,7 @@
 
             .nav-menu li {
                 width: 100%;
-                margin-bottom: 4px;
+                margin-bottom: 2px;
             }
 
             .nav-menu a {
@@ -904,7 +885,7 @@
                 justify-content: space-between;
                 width: 100%;
                 padding: 12px 14px;
-                font-size: 0.98rem;
+                font-size: 0.95rem;
             }
 
             .dropdown-menu {
@@ -917,10 +898,17 @@
                 transform: none;
                 opacity: 1;
                 margin-top: 4px;
+                display: none;
             }
 
             .dropdown.open .dropdown-menu {
                 display: block;
+            }
+
+            .btn-register-nav {
+                margin-left: 0;
+                margin-top: 10px;
+                justify-content: center;
             }
 
             .hero h2 { font-size: 2rem; }
@@ -939,11 +927,11 @@
             <div class="top-bar-info">
                 <span><i class="fa-solid fa-location-dot"></i> ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</span>
                 <span><i class="fa-solid fa-envelope"></i> cdcco.deaf@gmail.com</span>
-                <span><i class="fa-solid fa-phone"></i> 0631043000 (ติดต่อผ่าน SMS/LINE)</span>
+                <span><i class="fa-solid fa-phone"></i>0631043000 ติดต่อผ่าน LINE Official / SMS</span>
             </div>
             <div class="top-bar-social">
                 <a href="https://www.facebook.com/jattanun" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://lin.ee/vZ5YhGy"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/th.png" alt="เพิ่มเพื่อน" height="36" border="0"></a>
+                <a href="#" title="Line Official"><i class="fa-brands fa-line"></i></a>
                 <a href="#" title="YouTube Channel"><i class="fa-brands fa-youtube"></i></a>
             </div>
         </div>
@@ -953,7 +941,6 @@
     <header id="main-header">
         <div class="container nav-container">
             <a href="#" class="logo-box">
-                <!-- โลโก้จริงจากรูปภาพที่แนบ -->
                 <img src="https://i.postimg.cc/bJHrZZ3R/loko-ch-xs-n-ange-n.png" alt="โลโก้ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา" onerror="this.src='https://placehold.co/120x120/0033a0/ffffff?text=Deaf+Club'">
                 <div class="logo-text">
                     <h1>ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</h1>
@@ -966,29 +953,93 @@
                 <i class="fa-solid fa-bars"></i>
             </div>
 
-            <!-- Navigation Links -->
+            <!-- Navigation Links with Complete Requested Dropdowns -->
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="#about" class="active"><i class="fa-solid fa-house"></i> เกี่ยวกับชมรม</a></li>
                 
-                <!-- Dropdown Menu: หน่วยบริการ / เว็บอื่นๆ -->
-                <li class="dropdown" id="dropdown-btn">
+                <!-- 1. เกี่ยวกับชมรม -->
+                <li class="dropdown">
                     <a href="javascript:void(0);">
-                        <span><i class="fa-solid fa-handshake"></i> หน่วยบริการ / เว็บอื่นๆ</span>
-                        <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i>
+                        <span><i class="fa-solid fa-users-rectangle"></i> เกี่ยวกับชมรม</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="https://www.dep.go.th" target="_blank"><i class="fa-solid fa-building-columns"></i> กรมส่งเสริมและพัฒนาคุณภาพชีวิตคนพิการ</a></li>
-                        <li><a href="https://www.nadt.or.th" target="_blank"><i class="fa-solid fa-hands-asl-interpreting"></i> สมาคมคนหูหนวกแห่งประเทศไทย</a></li>
-                        <li><a href="https://www.chachoengsao.go.th" target="_blank"><i class="fa-solid fa-landmark"></i> ศาลากลางจังหวัดฉะเชิงเทรา</a></li>
-                        <li><a href="#services"><i class="fa-solid fa-headset"></i> ศูนย์บริการล่ามภาษามือฉะเชิงเทรา</a></li>
+                        <li><a href="javascript:void(0);" onclick="openModal('ประวัติชมรม', 'ประวัติความเป็นมาและการก่อตั้งชมรมคนหูหนวกจังหวัดฉะเชิงเทรา เพื่อเป็นศูนย์กลางการรวมกลุ่มและช่วยเหลือผู้พิการทางการได้ยินในพื้นที่')"><i class="fa-solid fa-history"></i> ประวัติ</a></li>
+                        <li><a href="javascript:void(0);" onclick="openModal('ข้อบังคับชมรม', 'ข้อบังคับและระเบียบการดำเนินงานของชมรมคนหูหนวกจังหวัดฉะเชิงเทรา')"><i class="fa-solid fa-scale-balanced"></i> ข้อบังคับ</a></li>
+                        <li><a href="javascript:void(0);" onclick="openModal('รายนามอดีตประธาน', 'รายนามอดีตประธานชมรมผู้ทำคุณประโยชน์และขับเคลื่อนงานสิทธิคนหูหนวกฉะเชิงเทรา')"><i class="fa-solid fa-user-tie"></i> รายนามอดีตประธาน</a></li>
+                        <li><a href="javascript:void(0);" onclick="openModal('คณะกรรมการบริหาร', 'รายนามคณะกรรมการบริหารชมรมคนหูหนวกจังหวัดฉะเชิงเทราชุดปัจจุบัน')"><i class="fa-solid fa-sitemap"></i> คณะกรรมการบริหาร</a></li>
                     </ul>
                 </li>
 
-                <li><a href="#news"><i class="fa-solid fa-newspaper"></i> ข่าวสาร</a></li>
-                <li><a href="#knowledge"><i class="fa-solid fa-book-open"></i> คลังข้อมูล</a></li>
-                <li><a href="#activities"><i class="fa-solid fa-calendar-check"></i> กิจกรรม</a></li>
-                <li><a href="#downloads"><i class="fa-solid fa-file-arrow-down"></i> ดาวน์โหลด</a></li>
-                <li><a href="#register-system" class="btn-register-nav"><i class="fa-solid fa-user-plus"></i> ระบบทะเบียนสมาชิก</a></li>
+                <!-- 2. หน่วยบริการ / เว็บอื่นๆ -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);">
+                        <span><i class="fa-solid fa-handshake"></i> หน่วยบริการ / เว็บอื่นๆ</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://www.dep.go.th" target="_blank"><i class="fa-solid fa-building-columns"></i> กรมส่งเสริมและพัฒนาคุณภาพชีวิตคนพิการ (พก.)</a></li>
+                        <li><a href="https://www.nadt.or.th" target="_blank"><i class="fa-solid fa-hands-asl-interpreting"></i> สมาคมคนหูหนวกแห่งประเทศไทย</a></li>
+                        <li><a href="https://www.chachoengsao.go.th" target="_blank"><i class="fa-solid fa-landmark"></i> จังหวัดฉะเชิงเทรา</a></li>
+                        <li><a href="javascript:void(0);" onclick="openModal('ศูนย์บริการคนพิการจังหวัดฉะเชิงเทรา', 'ข้อมูลและการติดต่อศูนย์บริการคนพิการจังหวัดฉะเชิงเทรา เพื่อรับการสนับสนุนสวัสดิการรัฐ')"><i class="fa-solid fa-house-medical-flag"></i> ศูนย์บริการคนพิการจังหวัดฉะเชิงเทรา</a></li>
+                    </ul>
+                </li>
+
+                <!-- 3. ข่าวสาร -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);">
+                        <span><i class="fa-solid fa-newspaper"></i> ข่าวสาร</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#news"><i class="fa-solid fa-bullhorn"></i> ข่าวประชาสัมพันธ์</a></li>
+                        <li><a href="javascript:void(0);" onclick="openModal('ประกาศสมัครงาน', 'ข่าวการรับสมัครงานสำหรับผู้พิการทางการได้ยิน และการประสานงานสถานประกอบการตามมาตรา 33 และ 35')"><i class="fa-solid fa-briefcase"></i> สมัครงาน</a></li>
+                        <li><a href="javascript:void(0);" onclick="openModal('รายงานประจำปี', 'สรุปผลการดำเนินงาน รายงานการเงิน และกิจกรรมประจำปีของชมรม')"><i class="fa-solid fa-chart-line"></i> รายงานประจำปี</a></li>
+                    </ul>
+                </li>
+
+                <!-- 4. คลังข้อมูล -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);">
+                        <span><i class="fa-solid fa-database"></i> คลังข้อมูล</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="javascript:void(0);" onclick="openModal('ประกาศชมรม', 'รวมประกาศ คำสั่ง และแจ้งเตือนสำคัญจากชมรมคนหูหนวกจังหวัดฉะเชิงเทรา')"><i class="fa-solid fa-scroll"></i> ประกาศ</a></li>
+                        <li><a href="javascript:void(0);" onclick="openModal('ข้อมูลการทำใบขับขี่', 'ขั้นตอน คู่มือ และสิทธิของผู้พิการทางการได้ยินในการทดสอบและขอรับใบอนุญาตขับรถ')"><i class="fa-solid fa-id-card"></i> ใบขับขี่</a></li>
+                        <li><a href="javascript:void(0);" onclick="openModal('ข้อมูลสถิติ', 'สถิติจำนวนผู้พิการทางการได้ยินในพื้นที่ 11 อำเภอของจังหวัดฉะเชิงเทรา')"><i class="fa-solid fa-chart-pie"></i> ข้อมูลสถิติ</a></li>
+                    </ul>
+                </li>
+
+                <!-- 5. กิจกรรม -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);">
+                        <span><i class="fa-solid fa-calendar-days"></i> กิจกรรม</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#activities"><i class="fa-solid fa-diagram-project"></i> โครงการ</a></li>
+                    </ul>
+                </li>
+
+                <!-- 6. ดาวน์โหลด -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);">
+                        <span><i class="fa-solid fa-download"></i> ดาวน์โหลด</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#downloads"><i class="fa-solid fa-icons"></i> ตรงสัญลักษณ์</a></li>
+                        <li><a href="javascript:void(0);" onclick="openModal('นิทานสองภาษา', 'สื่อการเรียนรู้นิทานสองภาษา (ภาษามือไทยและภาษาเขียน) สำหรับเด็กหูหนวกและครอบครัว')"><i class="fa-solid fa-book-open-reader"></i> นิทานสองภาษา</a></li>
+                        <li><a href="javascript:void(0);" onclick="openModal('แอปพลิเคชันภาษามือไทย', 'แนะนำและลิงก์ดาวน์โหลดแอปพลิเคชันเรียนรู้ภาษามือไทยและวิดีโอภาษามือ')"><i class="fa-solid fa-mobile-screen-button"></i> แอปภาษามือไทย</a></li>
+                    </ul>
+                </li>
+
+                <!-- 7. ปุ่มเด่น: เว็บไซต์ระบบทะเบียนสมาชิก -->
+                <li>
+                    <a href="#register-system" class="btn-register-nav">
+                        <i class="fa-solid fa-user-plus"></i> เว็บไซต์ระบบทะเบียนสมาชิก
+                    </a>
+                </li>
             </ul>
         </div>
     </header>
@@ -1003,7 +1054,7 @@
             <p>ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา มุ่งมั่นสร้างสังคมแห่งการยอมรับ ความเท่าเทียม การเข้าถึงข้อมูลข่าวสาร บริการล่ามภาษามือ และส่งเสริมอาชีพเพื่อความยั่งยืน</p>
             <div class="hero-btns">
                 <a href="#register-system" class="btn btn-gold"><i class="fa-solid fa-address-card"></i> ลงทะเบียนสมาชิกชมรม</a>
-                <a href="#services" class="btn btn-outline-white"><i class="fa-solid fa-hands-asl-interpreting"></i> บริการล่ามภาษามือ</a>
+                <a href="javascript:void(0);" onclick="openModal('บริการล่ามภาษามือ', 'สามารถแจ้งความประสงค์ขอใช้บริการล่ามภาษามือล่วงหน้าผ่าน LINE Official หรือ SMS ของชมรม')" class="btn btn-outline-white"><i class="fa-solid fa-hands-asl-interpreting"></i> บริการล่ามภาษามือ</a>
             </div>
         </div>
     </section>
@@ -1042,50 +1093,12 @@
         </div>
     </div>
 
-    <!-- Services Section -->
-    <section class="section-padding" id="services">
-        <div class="container">
-            <div class="section-title-wrap text-center">
-                <span class="section-subtitle">Our Services & Mission</span>
-                <h3 class="section-title">หน่วยบริการและภารกิจหลัก</h3>
-            </div>
-            <div class="grid-3">
-                <div class="service-card">
-                    <div class="service-icon-box"><i class="fa-solid fa-hands-asl-interpreting"></i></div>
-                    <h4>บริการล่ามภาษามือ</h4>
-                    <p>อำนวยความสะดวกในการจัดส่งล่ามภาษามือ สำหรับติดต่อหน่วยงานราชการ โรงพยาบาล สถานศึกษา และสถานประกอบการ</p>
-                    <a href="javascript:void(0);" onclick="openModal('บริการล่ามภาษามือ', 'สามารถแจ้งความประสงค์ขอใช้บริการล่ามภาษามือล่วงหน้าอย่างน้อย 3 วัน เพื่อติดต่อหน่วยงานราชการหรือพบแพทย์ โดยประสานงานผ่าน LINE Official หรือ SMS ของชมรม')" class="card-link">รายละเอียดบริการ <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon-box"><i class="fa-solid fa-id-card"></i></div>
-                    <h4>สวัสดิการและทะเบียนสมาชิก</h4>
-                    <p>ดูแลการขึ้นทะเบียนสมาชิก ออกบัตรประจำตัวชมรม แนะนำสิทธิคนพิการ และการขอรับสวัสดิการตามกฎหมาย</p>
-                    <a href="#register-system" class="card-link">เข้าสู่ระบบทะเบียน <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon-box"><i class="fa-solid fa-briefcase"></i></div>
-                    <h4>ส่งเสริมอาชีพและการฝึกอบรม</h4>
-                    <p>จัดโครงการอบรมทักษะการทำงาน เสริมสร้างอาชีพแก่คนหูหนวก พร้อมประสานงานการจ้างงานตามมาตรา 33 และ 35</p>
-                    <a href="javascript:void(0);" onclick="openModal('โครงการส่งเสริมอาชีพ', 'ชมรมฯ มีการจัดอบรมอาชีพเป็นประจำทุกไตรมาส เช่น งานหัตถกรรม งานคอมพิวเตอร์ และการส่งเสริมผู้ประกอบการหูหนวกรายย่อย')" class="card-link">ดูโครงการอาชีพ <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- News Section -->
     <section class="section-padding" id="news" style="background-color: var(--light-blue-bg);">
         <div class="container">
             <div class="section-title-wrap text-center">
                 <span class="section-subtitle">Updates & PR</span>
-                <h3 class="section-title">ข่าวประชาสัมพันธ์ล่าสุด</h3>
-            </div>
-
-            <!-- Filter Tabs -->
-            <div class="filter-tabs">
-                <button class="tab-btn active"> ทั้งหมด</button>
-                <button class="tab-btn"> ข่าวชมรม</button>
-                <button class="tab-btn"> ประกาศสิทธิประโยชน์</button>
-                <button class="tab-btn"> ข่าวสารแปดริ้ว</button>
+                <h3 class="section-title">ข่าวประชาสัมพันธ์และกิจกรรมล่าสุด</h3>
             </div>
 
             <div class="grid-3">
@@ -1096,10 +1109,10 @@
                         <span class="news-category">ข่าวชมรม</span>
                     </div>
                     <div class="news-body">
-                        <div class="news-date"><i class="fa-regular fa-calendar"></i> 10 ตุลาคม 2026</div>
+                        <div class="news-date"><i class="fa-regular fa-calendar"></i> ข่าวสารประจำเดือน</div>
                         <h4 class="news-title">ขอเชิญเข้าร่วมการประชุมใหญ่สามัญประจำปี ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</h4>
-                        <p class="news-excerpt">ขอเรียนเชิญสมาชิกทุกท่านเข้าร่วมฟังรายงานผลการดำเนินงานและร่วมลงมติแนวทางการพัฒนาชมรม ณ ศาลากลางจังหวัด...</p>
-                        <a href="javascript:void(0);" onclick="openModal('ประชุมใหญ่สามัญประจำปี', 'กำหนดการประชุมใหญ่สามัญประจำปี ณ ห้องประชุมศาลากลางจังหวัดฉะเชิงเทรา เวลา 09.00 - 15.00 น. มีบริการล่ามภาษามือตลอดการประชุม')" class="card-link">อ่านต่อ <i class="fa-solid fa-arrow-right"></i></a>
+                        <p class="news-excerpt">ขอเรียนเชิญสมาชิกทุกท่านเข้าร่วมฟังรายงานผลการดำเนินงานและร่วมลงมติแนวทางการพัฒนาชมรม...</p>
+                        <a href="javascript:void(0);" onclick="openModal('ประชุมใหญ่สามัญประจำปี', 'กำหนดการประชุมใหญ่สามัญประจำปี มีบริการล่ามภาษามือตลอดการประชุม')" class="card-link">อ่านต่อ <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
 
@@ -1107,13 +1120,13 @@
                 <div class="news-card">
                     <div style="position:relative;">
                         <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80" alt="อบรมภาษามือ" class="news-img">
-                        <span class="news-category">อบรมพัฒนาทักษะ</span>
+                        <span class="news-category">สมัครงาน & อบรม</span>
                     </div>
                     <div class="news-body">
-                        <div class="news-date"><i class="fa-regular fa-calendar"></i> 25 กันยายน 2026</div>
+                        <div class="news-date"><i class="fa-regular fa-calendar"></i> ข่าวสารประจำเดือน</div>
                         <h4 class="news-title">เปิดรับสมัคร อบรมการใช้ภาษามือไทยขั้นพื้นฐานสำหรับสถานประกอบการ</h4>
                         <p class="news-excerpt">โครงการเพิ่มประสิทธิภาพการสื่อสารในองค์กร เพื่อสร้างสภาพแวดล้อมการทำงานที่เอื้อต่อผู้พิการทางการได้ยิน...</p>
-                        <a href="javascript:void(0);" onclick="openModal('อบรมภาษามือไทยขั้นพื้นฐาน', 'เปิดรับสมัครหน่วยงานและสถานประกอบการที่สนใจส่งบุคลากรเข้าร่วมเรียนรู้ภาษามือไทยเพื่อการทำงาน ร่วมมือกับสมาคมคนหูหนวกแห่งประเทศไทย')" class="card-link">อ่านต่อ <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="javascript:void(0);" onclick="openModal('อบรมภาษามือไทยขั้นพื้นฐาน', 'เปิดรับสมัครหน่วยงานและสถานประกอบการที่สนใจส่งบุคลากรเข้าร่วมเรียนรู้ภาษามือไทย')" class="card-link">อ่านต่อ <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
 
@@ -1124,58 +1137,28 @@
                         <span class="news-category">ประกาศสิทธิ</span>
                     </div>
                     <div class="news-body">
-                        <div class="news-date"><i class="fa-regular fa-calendar"></i> 12 กันยายน 2026</div>
+                        <div class="news-date"><i class="fa-regular fa-calendar"></i> ข่าวสารประจำเดือน</div>
                         <h4 class="news-title">อัปเดตสิทธิประโยชน์เบี้ยความพิการและการยื่นเรื่องต่ออายุบัตรประจำตัว</h4>
                         <p class="news-excerpt">สิทธิประโยชน์ใหม่สำหรับผู้พิการทางการได้ยิน และช่องทางการต่ออายุบัตรประจำตัวคนพิการแบบออนไลน์...</p>
-                        <a href="javascript:void(0);" onclick="openModal('สิทธิประโยชน์เบี้ยความพิการ', 'ผู้พิการทางการได้ยินสามารถตรวจสอบสิทธิการรับเบี้ยความพิการเพิ่มเติม และการลงทะเบียนขอรับอุปกรณ์เครื่องช่วยฟังฟรีจาก พก.')" class="card-link">อ่านต่อ <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="javascript:void(0);" onclick="openModal('สิทธิประโยชน์เบี้ยความพิการ', 'ผู้พิการทางการได้ยินสามารถตรวจสอบสิทธิการรับเบี้ยความพิการเพิ่มเติม')" class="card-link">อ่านต่อ <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Knowledge Base Section -->
-    <section class="section-padding" id="knowledge">
-        <div class="container">
-            <div class="section-title-wrap text-center">
-                <span class="section-subtitle">Resources & Knowledge</span>
-                <h3 class="section-title">คลังข้อมูลและสิทธิควรรู้</h3>
-            </div>
-            <div class="grid-3">
-                <div class="service-card">
-                    <div class="service-icon-box" style="color: #10b981; background: #ecfdf5;"><i class="fa-solid fa-gavel"></i></div>
-                    <h4>พ.ร.บ. ส่งเสริมคุณภาพชีวิตคนพิการ</h4>
-                    <p>สรุปสาระสำคัญของกฎหมาย พ.ร.บ. ส่งเสริมและพัฒนาคุณภาพชีวิตคนพิการ พ.ศ. 2550 และสิทธิประโยชน์ตามมาตราต่างๆ</p>
-                    <a href="javascript:void(0);" onclick="openModal('พ.ร.บ. ส่งเสริมคุณภาพชีวิตคนพิการ', 'รวมข้อมูลข้อกฎหมายที่คนหูหนวกควรทราบ สิทธิในการได้รับการคุ้มครองจากการเลือกปฏิบัติ และการเข้าถึงสิ่งอำนวยความสะดวก')" class="card-link">อ่านบทความ <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon-box" style="color: #f59e0b; background: #fffbeb;"><i class="fa-solid fa-hands"></i></div>
-                    <h4>คลังคำศัพท์ภาษามือไทย</h4>
-                    <p>วิดีโอและภาพประกอบคลังคำศัพท์ภาษามือไทยพื้นฐาน คำศัพท์เฉพาะทางด้านการแพทย์ และคำศัพท์ที่ใช้ในชีวิตประจำวัน</p>
-                    <a href="javascript:void(0);" onclick="openModal('คลังคำศัพท์ภาษามือไทย', 'เรียนรู้ภาษามือไทยผ่านคลิปวิดีโอสาธิต แบ่งเป็นหมวดหมู่ หมวดหมอ/โรงพยาบาล, หมวดสถานที่ราชการ และหมวดการสื่อสารทั่วไป')" class="card-link">เข้าสู่คลังวิดีโอ <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon-box" style="color: #6366f1; background: #eef2ff;"><i class="fa-solid fa-heart-pulse"></i></div>
-                    <h4>การดูแลสุขภาพและการเข้าถึงแพทย์</h4>
-                    <p>คู่มือแนะนำการเตรียมตัวสำหรับคนหูหนวกก่อนไปพบแพทย์ พร้อมแบบฟอร์มภาษามือเบื้องต้นสำหรับอาการป่วย</p>
-                    <a href="javascript:void(0);" onclick="openModal('คู่มือพบแพทย์สำหรับคนหูหนวก', 'ข้อแนะนำขั้นตอนการขอใช้บริการล่ามภาษามือทางไกลผ่านแอปพลิเคชันขณะพบแพทย์ในโรงพยาบาลฉะเชิงเทรา')" class="card-link">ดาวน์โหลดคู่มือ <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Activities Gallery Section -->
-    <section class="section-padding" id="activities" style="background-color: var(--light-blue-bg);">
+    <section class="section-padding" id="activities">
         <div class="container">
             <div class="section-title-wrap text-center">
-                <span class="section-subtitle">Events Gallery</span>
-                <h3 class="section-title">ภาพกิจกรรมชมรม</h3>
+                <span class="section-subtitle">Events & Projects</span>
+                <h3 class="section-title">โครงการและกิจกรรมชมรม</h3>
             </div>
             <div class="grid-3">
                 <div class="service-card" style="padding:0; overflow:hidden;">
                     <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="กิจกรรมจิตอาสา" style="width:100%; height:200px; object-fit:cover;">
                     <div style="padding:20px;">
-                        <h4>กิจกรรมจิตอาสาคนหูหนวกพัฒนาชุมชน</h4>
+                        <h4>โครงการจิตอาสาคนหูหนวกพัฒนาชุมชน</h4>
                         <p style="font-size:0.85rem; color:var(--text-muted);">ร่วมมือกับจังหวัดฉะเชิงเทราจัดกิจกรรมพัฒนาพื้นที่สาธารณะ ณ วัดหลวงพ่อโสธร</p>
                     </div>
                 </div>
@@ -1198,51 +1181,51 @@
     </section>
 
     <!-- Downloads Section -->
-    <section class="section-padding" id="downloads">
+    <section class="section-padding" id="downloads" style="background-color: var(--light-blue-bg);">
         <div class="container">
             <div class="section-title-wrap text-center">
-                <span class="section-subtitle">Downloads & Forms</span>
-                <h3 class="section-title">เอกสารและแบบฟอร์มดาวน์โหลด</h3>
+                <span class="section-subtitle">Downloads & Media</span>
+                <h3 class="section-title">เอกสาร สัญลักษณ์ และสื่อดาวน์โหลด</h3>
             </div>
             <div class="download-box">
+                <div class="download-item">
+                    <div class="download-info">
+                        <i class="fa-solid fa-icons download-icon" style="color:var(--primary-blue);"></i>
+                        <div class="download-text">
+                            <h5>ดาวน์โหลดตรงสัญลักษณ์ / สัญลักษณ์คนหูหนวก</h5>
+                            <p>PNG / SVG • ไฟล์สัญลักษณ์ทางการสำหรับสติกเกอร์และป้ายบอกทาง</p>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0);" onclick="openModal('ดาวน์โหลดสัญลักษณ์', 'ระบบกำลังจัดเตรียมไฟล์สัญลักษณ์สากลผู้พิการทางการได้ยินเพื่อนำไปใช้งาน')" class="btn-download"><i class="fa-solid fa-download"></i> ดาวน์โหลด</a>
+                </div>
+
                 <div class="download-item">
                     <div class="download-info">
                         <i class="fa-solid fa-file-pdf download-icon"></i>
                         <div class="download-text">
                             <h5>แบบฟอร์มสมัครสมาชิกชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</h5>
-                            <p>PDF • ขนาด 1.2 MB • อัปเดตเมื่อ มกราคม 2026</p>
+                            <p>PDF • แบบฟอร์มทางการสำหรับกรอกข้อมูล</p>
                         </div>
                     </div>
-                    <a href="javascript:void(0);" onclick="alert('ระบบกำลังดาวน์โหลดแบบฟอร์มสมัครสมาชิก')" class="btn-download"><i class="fa-solid fa-download"></i> ดาวน์โหลด</a>
+                    <a href="javascript:void(0);" onclick="openModal('แบบฟอร์มสมัครสมาชิก', 'ท่านสามารถดาวน์โหลดแบบฟอร์ม PDF เพื่อนำมากรอก หรือลงทะเบียนผ่านระบบออนไลน์ได้')" class="btn-download"><i class="fa-solid fa-download"></i> ดาวน์โหลด</a>
                 </div>
 
                 <div class="download-item">
                     <div class="download-info">
-                        <i class="fa-solid fa-file-pdf download-icon"></i>
+                        <i class="fa-solid fa-mobile-screen-button download-icon" style="color:#10b981;"></i>
                         <div class="download-text">
-                            <h5>แบบคำขอใช้บริการล่ามภาษามือ (ฉบับทางการ)</h5>
-                            <p>PDF • ขนาด 850 KB • อัปเดตเมื่อ มีนาคม 2026</p>
+                            <h5>แอปพลิเคชันภาษามือไทย (Tsl App)</h5>
+                            <p>iOS / Android • คู่มือคลังคำศัพท์ภาษามือไทยเคลื่อนที่</p>
                         </div>
                     </div>
-                    <a href="javascript:void(0);" onclick="alert('ระบบกำลังดาวน์โหลดแบบฟอร์มคำขอใช้บริการล่ามภาษามือ')" class="btn-download"><i class="fa-solid fa-download"></i> ดาวน์โหลด</a>
-                </div>
-
-                <div class="download-item">
-                    <div class="download-info">
-                        <i class="fa-solid fa-file-pdf download-icon"></i>
-                        <div class="download-text">
-                            <h5>หนังสือยินยอมการใช้ข้อมูลส่วนบุคคล (PDPA Consent Form)</h5>
-                            <p>PDF • ขนาด 520 KB • อัปเดตเมื่อ กุมภาพันธ์ 2026</p>
-                        </div>
-                    </div>
-                    <a href="javascript:void(0);" onclick="alert('ระบบกำลังดาวน์โหลดแบบฟอร์ม PDPA')" class="btn-download"><i class="fa-solid fa-download"></i> ดาวน์โหลด</a>
+                    <a href="javascript:void(0);" onclick="openModal('แอปภาษามือไทย', 'ลิงก์สำหรับดาวน์โหลดแอปพลิเคชันเรียนรู้ภาษามือไทยบน App Store และ Google Play Store')" class="btn-download"><i class="fa-solid fa-link"></i> รับลิงก์ดาวน์โหลด</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Member Registration CTA Banner -->
-    <section class="container" id="register-system" style="margin-bottom: 60px;">
+    <section class="container" id="register-system" style="margin-top: 60px; margin-bottom: 60px;">
         <div class="promo-banner">
             <div class="promo-content">
                 <div class="promo-text">
@@ -1250,7 +1233,7 @@
                     <p>ระบบฐานข้อมูลสมาชิกชมรมคนหูหนวกจังหวัดฉะเชิงเทรา ลงทะเบียนออนไลน์เพื่อรับบัตรสมาชิกดิจิทัล อัปเดตสิทธิประโยชน์ และขอรับบริการล่ามภาษามือได้สะดวกรวดเร็ว</p>
                 </div>
                 <div>
-                    <a href="javascript:void(0);" onclick="openModal('ระบบทะเบียนสมาชิก', 'ยินดีต้อนรับสู่ระบบทะเบียนสมาชิกออนไลน์ ท่านสามารถกรอกข้อมูลส่วนตัว แนบสำเนาบัตรประจำตัวคนพิการ เพื่อออกบัตรสมาชิกชมรมแบบดิจิทัล')" class="btn btn-gold" style="white-space:nowrap; padding: 15px 35px; font-size:1.1rem;">
+                    <a href="javascript:void(0);" onclick="openModal('เว็บไซต์ระบบทะเบียนสมาชิก', 'ยินดีต้อนรับสู่ระบบทะเบียนสมาชิกออนไลน์ ท่านสามารถกรอกข้อมูลส่วนตัว แนบสำเนาบัตรประจำตัวคนพิการ เพื่อออกบัตรสมาชิกชมรมแบบดิจิทัล')" class="btn btn-gold" style="white-space:nowrap; padding: 15px 35px; font-size:1.1rem;">
                         <i class="fa-solid fa-user-plus"></i> เข้าสู่ระบบทะเบียน
                     </a>
                 </div>
@@ -1276,9 +1259,9 @@
                 <div class="footer-col">
                     <h4>เมนูด่วน</h4>
                     <li><a href="#about"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> เกี่ยวกับชมรม</a></li>
-                    <li><a href="#services"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> บริการล่ามภาษามือ</a></li>
-                    <li><a href="#news"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> ข่าวสารและกิจกรรม</a></li>
-                    <li><a href="#downloads"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> แบบฟอร์มดาวน์โหลด</a></li>
+                    <li><a href="#news"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> ข่าวสาร</a></li>
+                    <li><a href="#activities"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> โครงการ / กิจกรรม</a></li>
+                    <li><a href="#downloads"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> ดาวน์โหลด</a></li>
                     <li><a href="#register-system"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> ระบบลงทะเบียนสมาชิก</a></li>
                 </div>
 
@@ -1305,7 +1288,7 @@
         </div>
     </footer>
 
-    <!-- Modal Box for Interactive Popups -->
+    <!-- Modal Box for Dynamic Dialogs -->
     <div class="modal-overlay" id="infoModal">
         <div class="modal-box">
             <span class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></span>
@@ -1320,13 +1303,13 @@
     </div>
 
     <script>
-        // DOM Elements
+        // DOM Elements Initialization
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const navMenu = document.getElementById('nav-menu');
-        const dropdownBtn = document.getElementById('dropdown-btn');
+        const dropdowns = document.querySelectorAll('.dropdown');
         const infoModal = document.getElementById('infoModal');
 
-        // Mobile Menu Drawer Toggle (Android & iOS Responsive)
+        // Mobile Menu Toggle Drawer
         mobileBtn.addEventListener('click', () => {
             navMenu.classList.toggle('active');
             const icon = mobileBtn.querySelector('i');
@@ -1339,35 +1322,32 @@
             }
         });
 
-        // Dropdown Toggle for Touch Screen Mobile devices
-        dropdownBtn.addEventListener('click', (e) => {
-            if (window.innerWidth <= 992) {
-                dropdownBtn.classList.toggle('open');
-            }
-        });
-
-        // Auto Close Mobile Menu when clicking a nav link
-        document.querySelectorAll('.nav-menu a:not(.dropdown > a)').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                const icon = mobileBtn.querySelector('i');
-                if (icon) {
-                    icon.classList.remove('fa-xmark');
-                    icon.classList.add('fa-bars');
+        // Touch/Click Toggle for Dropdowns on Mobile Devices
+        dropdowns.forEach(dropdown => {
+            const dropLink = dropdown.querySelector('a');
+            dropLink.addEventListener('click', (e) => {
+                if (window.innerWidth <= 992) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('open');
                 }
             });
         });
 
-        // News Tab Filtering Logic
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                tabBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+        // Close Mobile Drawer when clicking sub-links
+        document.querySelectorAll('.dropdown-menu a, .btn-register-nav').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 992) {
+                    navMenu.classList.remove('active');
+                    const icon = mobileBtn.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    }
+                }
             });
         });
 
-        // Modal Controls
+        // Modal Controls Functions
         function openModal(title, content) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalBody').innerText = content;
@@ -1378,14 +1358,14 @@
             infoModal.classList.remove('active');
         }
 
-        // Close Modal when clicking outside the box
+        // Close Modal when clicking background overlay
         window.addEventListener('click', (e) => {
             if (e.target === infoModal) {
                 closeModal();
             }
         });
 
-        // Sticky Header Elevation Effect on Scroll
+        // Sticky Header Elevation Transition
         window.addEventListener('scroll', () => {
             const header = document.getElementById('main-header');
             if (window.scrollY > 50) {
