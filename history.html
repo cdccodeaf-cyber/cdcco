@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ประวัติชมรม - ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --primary-hover: #003d80;
+            --accent-gold: #d4af37;
+            --dark-bg: #111827;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Sarabun',sans-serif; -webkit-tap-highlight-color:transparent; }
+        body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.7; }
+        
+        /* Top Bar */
+        .top-bar { background-color: var(--dark-bg); color: var(--white); padding: 8px 5%; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; }
+        .top-bar a { color: #94a3b8; text-decoration: none; margin-left: 15px; }
+
+        /* Header */
+        header { background: var(--white); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 5%; max-width: 1400px; margin: 0 auto; }
+        .logo-box { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-box img { height: 55px; width: auto; }
+        .logo-text h1 { font-size: 1.15rem; color: var(--primary-color); font-weight: 700; line-height: 1.2; }
+        .logo-text p { font-size: 0.7rem; color: var(--text-light); }
+
+        /* Navigation Menu */
+        .nav-menu { display: flex; list-style: none; gap: 5px; align-items: center; }
+        .nav-menu li { position: relative; }
+        .nav-menu a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.88rem; padding: 8px 10px; border-radius: 6px; display: flex; align-items: center; gap: 4px; transition: 0.2s; }
+        .nav-menu a:hover, .nav-menu a.active { color: var(--primary-color); background-color: rgba(0,86,179,0.08); }
+        .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--white); min-width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; padding: 8px 0; list-style: pointer; z-index: 1001; border: 1px solid #e2e8f0; }
+        .dropdown-menu li a { padding: 8px 15px; color: var(--text-dark); font-size: 0.85rem; font-weight: 500; border-radius: 0; }
+        .dropdown-menu li a:hover { background: #f1f5f9; color: var(--primary-color); }
+        @media(min-width: 993px) { .dropdown:hover .dropdown-menu { display: block; } }
+        .btn-register { background-color: var(--primary-color); color: var(--white) !important; padding: 8px 15px !important; border-radius: 20px !important; }
+
+        /* Page Banner */
+        .page-banner { background: linear-gradient(135deg, var(--primary-color), var(--dark-bg)); color: var(--white); padding: 50px 20px; text-align: center; }
+        .page-banner h2 { font-size: 2.2rem; margin-bottom: 10px; }
+
+        /* Content Section */
+        .content-container { max-width: 900px; margin: 40px auto; padding: 0 20px; background: var(--white); border-radius: 12px; box-shadow: var(--shadow); padding: 40px; }
+        .content-container h3 { color: var(--primary-color); font-size: 1.5rem; margin-bottom: 20px; border-left: 5px solid var(--accent-gold); padding-left: 12px; }
+        .content-container p { margin-bottom: 20px; color: #475569; font-size: 1.05rem; }
+
+        /* Footer */
+        footer { background-color: var(--dark-bg); color: var(--white); padding: 30px 5%; text-align: center; margin-top: 60px; font-size: 0.9rem; color: #9ca3af; }
+        
+        .mobile-toggle { display: none; font-size: 1.4rem; color: var(--primary-color); cursor: pointer; }
+        @media(max-width: 992px) {
+            .mobile-toggle { display: block; }
+            .nav-menu { position: fixed; top: 0; right: -100%; width: 270px; height: 100vh; background: var(--white); flex-direction: column; align-items: flex-start; padding: 70px 20px; box-shadow: -5px 0 15px rgba(0,0,0,0.1); transition: 0.3s; z-index: 999; overflow-y: auto; }
+            .nav-menu.active { right: 0; }
+            .nav-menu li { width: 100%; }
+            .nav-menu a { width: 100%; padding: 10px; }
+            .dropdown-menu { position: static; box-shadow: none; border: none; background: #f8fafc; padding-left: 15px; display: none; }
+            .dropdown.open .dropdown-menu { display: block; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div><i class="fa-solid fa-location-dot"></i> ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</div>
+        <div><a href="#"><i class="fa-brands fa-facebook"></i> Facebook</a></div>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-box">
+                <img src="โลโก้ ชื่อสีน้ำเงิน.jpg" alt="โลโก้ชมรม">
+                <div class="logo-text">
+                    <h1>ชมรมคนหูหนวกฉะเชิงเทรา</h1>
+                    <p>CLUB OF THE DEAF</p>
+                </div>
+            </a>
+            <div class="mobile-toggle" id="mobile-btn"><i class="fa-solid fa-bars"></i></div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="dropdown" id="drop-about">
+                    <a href="javascript:void(0);" class="active">เกี่ยวกับชมรม <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="history.html">ประวัติชมรม</a></li>
+                        <li><a href="clubbylaws.html">ข้อบังคับ</a></li>
+                        <li><a href="presidents.html">รายนามอดีตประธาน</a></li>
+                        <li><a href="committee.html">คณะกรรมการบริหาร</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html">หน้าแรก</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0);">ข่าวสาร <i class="fa-solid fa-chevron-down" style="font-size:0.7rem;"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="news.html">ข่าวประชาสัมพันธ์</a></li>
+                        <li><a href="work.html">สมัครงาน</a></li>
+                        <li><a href="report.html">รายงานประจำปี</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="btn-register">ทะเบียนสมาชิก</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="page-banner">
+        <h2>ประวัติชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</h2>
+        <p>ความเป็นมาและเจตนารมณ์ในการก่อตั้งชมรม</p>
+    </div>
+
+    <div class="content-container">
+        <h3>ความเป็นมาของชมรม</h3>
+        <p>ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา ก่อตั้งขึ้นจากความร่วมมือของผู้พิการทางการได้ยิน ผู้นำชุมชน และอาสาสมัครในพื้นที่จังหวัดฉะเชิงเทรา[cite: 1] โดยเล็งเห็นถึงความสำคัญในการสร้างพื้นที่กลางเพื่อการพบปะแลกเปลี่ยนข้อมูลข่าวสาร การพัฒนาทักษะชีวิต และการประสานความช่วยเหลือด้านสวัสดิการต่างๆ จากภาครัฐและเอกชน</p>
+        <p>ตลอดระยะเวลาที่ผ่านมา ชมรมฯ ได้มุ่งมั่นดำเนินกิจกรรมเพื่อส่งเสริมสิทธิความเท่าเทียม สนับสนุนการใช้ภาษามือไทยอย่างถูกต้อง ตลอดจนการพัฒนาอาชีพและการเข้าถึงบริการสาธารณะสำหรับคนหูหนวกในจังหวัดฉะเชิงเทราและพื้นที่ใกล้เคียงอย่างต่อเนื่อง</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('mobile-btn');
+        const menu = document.getElementById('nav-menu');
+        btn.addEventListener('click', () => { menu.classList.toggle('active'); });
+        document.getElementById('drop-about').addEventListener('click', () => {
+            if(window.innerWidth <= 992) document.getElementById('drop-about').classList.toggle('open');
+        });
+    </script>
+</body>
+</html>
