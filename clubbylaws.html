@@ -1,3 +1,1049 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา | Club of the Deaf in Chachoengsao</title>
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-blue: #0033a0;
+            --primary-dark: #002169;
+            --accent-gold: #d4af37;
+            --accent-gold-hover: #b59226;
+            --sky-blue: #00a8e8;
+            --light-blue-bg: #f0f7ff;
+            --dark-bg: #0f172a;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Utility Classes */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center { text-align: center; }
+
+        /* Top Announcement Bar */
+        .top-bar {
+            background: linear-gradient(135deg, var(--dark-bg), var(--primary-dark));
+            color: #ffffff;
+            font-size: 0.85rem;
+            padding: 8px 0;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .top-bar-info span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .top-bar-info i {
+            color: var(--accent-gold);
+        }
+
+        .top-bar-social a {
+            color: #ffffff;
+            margin-left: 12px;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .top-bar-social a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-box img {
+            height: 68px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.12));
+            transition: var(--transition);
+        }
+
+        .logo-box:hover img {
+            transform: scale(1.03);
+        }
+
+        .logo-text h1 {
+            font-size: 1.25rem;
+            color: var(--primary-blue);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.2px;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        /* Desktop Navigation Menu */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 10px 12px;
+            border-radius: 8px;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .nav-menu a:hover, 
+        .nav-menu a.active {
+            color: var(--primary-blue);
+            background-color: var(--light-blue-bg);
+        }
+
+        /* Dropdown Styling */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            min-width: 250px;
+            box-shadow: var(--shadow-lg);
+            border-radius: 12px;
+            padding: 8px 0;
+            list-style: none;
+            z-index: 1010;
+            border: 1px solid var(--border-color);
+            transform: translateY(10px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .dropdown-menu li {
+            width: 100%;
+        }
+
+        .dropdown-menu li a {
+            padding: 10px 16px;
+            color: var(--text-main);
+            font-size: 0.88rem;
+            font-weight: 500;
+            border-radius: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: var(--light-blue-bg);
+            color: var(--primary-blue);
+            padding-left: 20px;
+        }
+
+        /* Special Registration Button */
+        .btn-register-nav {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark)) !important;
+            color: #ffffff !important;
+            padding: 10px 18px !important;
+            border-radius: 30px !important;
+            box-shadow: 0 4px 12px rgba(0, 51, 160, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-left: 8px;
+        }
+
+        .btn-register-nav:hover {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-hover)) !important;
+            color: var(--dark-bg) !important;
+            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.6rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            background: var(--light-blue-bg);
+        }
+
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 33, 105, 0.92), rgba(15, 23, 42, 0.88)), 
+                        url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: #ffffff;
+            padding: 120px 0 100px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: #f8fafc;
+            clip-path: polygon(0 100%, 100% 100%, 100% 0);
+        }
+
+        .hero-content {
+            max-width: 850px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            opacity: 0.92;
+            margin-bottom: 35px;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 13px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.98rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-gold {
+            background-color: var(--accent-gold);
+            color: var(--dark-bg);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
+        }
+
+        .btn-gold:hover {
+            background-color: var(--accent-gold-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-outline-white {
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            background: transparent;
+        }
+
+        .btn-outline-white:hover {
+            background-color: #ffffff;
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .stats-bar {
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 10px;
+        }
+
+        .stat-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--light-blue-bg);
+            color: var(--primary-blue);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .stat-info h4 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            line-height: 1;
+        }
+
+        .stat-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* Section Titles */
+        .section-title-wrap {
+            margin-bottom: 50px;
+        }
+
+        .section-subtitle {
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--text-main);
+            font-weight: 800;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-gold);
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Cards & Grid Systems */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 35px 28px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--sky-blue));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon-box {
+            width: 65px;
+            height: 65px;
+            background: var(--light-blue-bg);
+            color: var(--primary-blue);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 22px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon-box {
+            background: var(--primary-blue);
+            color: #ffffff;
+        }
+
+        .service-card h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-link {
+            color: var(--primary-blue);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .card-link:hover {
+            color: var(--accent-gold);
+            gap: 10px;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .news-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .news-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(0, 51, 160, 0.85);
+            backdrop-filter: blur(4px);
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .news-body {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .news-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .news-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .news-excerpt {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        /* Download Box */
+        .download-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .download-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+            border-radius: 8px;
+        }
+
+        .download-item:last-child {
+            border-bottom: none;
+        }
+
+        .download-item:hover {
+            background-color: var(--light-blue-bg);
+        }
+
+        .download-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .download-icon {
+            font-size: 1.8rem;
+            color: #e11d48;
+        }
+
+        .download-text h5 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .download-text p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .btn-download {
+            background: var(--light-blue-bg);
+            color: var(--primary-blue);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .btn-download:hover {
+            background: var(--primary-blue);
+            color: #ffffff;
+        }
+
+        /* Promo Banner */
+        .promo-banner {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+            border-radius: 24px;
+            padding: 50px 40px;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .promo-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 350px;
+            height: 350px;
+            background: rgba(212, 175, 55, 0.15);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .promo-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-text h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .promo-text p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            max-width: 650px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            padding: 70px 0 25px;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--primary-blue));
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid #334155;
+        }
+
+        .footer-logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-box img {
+            height: 55px;
+            width: auto;
+        }
+
+        .footer-col h4 {
+            font-size: 1.15rem;
+            margin-bottom: 22px;
+            color: var(--accent-gold);
+            font-weight: 700;
+            position: relative;
+        }
+
+        .footer-col p, .footer-col li {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            list-style: none;
+        }
+
+        .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: #ffffff;
+            padding-left: 5px;
+        }
+
+        .contact-list li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .contact-list i {
+            color: var(--accent-gold);
+            margin-top: 4px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 25px;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-box {
+            background: #ffffff;
+            border-radius: 20px;
+            max-width: 650px;
+            width: 100%;
+            padding: 35px;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--text-main);
+        }
+
+        @media (max-width: 992px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .top-bar-info span:not(:first-child) {
+                display: none;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 310px;
+                height: 100vh;
+                background-color: #ffffff;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 85px 20px 40px;
+                box-shadow: var(--shadow-lg);
+                transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 999;
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                margin-bottom: 2px;
+            }
+
+            .nav-menu a {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                padding: 12px 14px;
+                font-size: 0.95rem;
+            }
+
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border: none;
+                background-color: var(--light-blue-bg);
+                padding-left: 10px;
+                border-radius: 8px;
+                transform: none;
+                opacity: 1;
+                margin-top: 4px;
+                display: none;
+            }
+
+            .dropdown.open .dropdown-menu {
+                display: block;
+            }
+
+            .btn-register-nav {
+                margin-left: 0;
+                margin-top: 10px;
+                justify-content: center;
+            }
+
+            .hero h2 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .logo-box img { height: 52px; }
+            .logo-text h1 { font-size: 1.05rem; }
+            .promo-content { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-bar-info">
+                <a href="https://maps.app.goo.gl/P3dr8oQ1vtMZZDHD9" title="แผนที่ ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา"><i class="fa-solid fa-location-dot"></i></a>
+                <span><i class="fa-solid fa-envelope"></i> cdcco.deaf@gmail.com</span>
+                <span><i class="fa-solid fa-phone"></i> ติดต่อผ่าน LINE Official @866jlwqf</span>
+            </div>
+            <div class="top-bar-social">
+                <a href="https://www.facebook.com/jattanun" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://lin.ee/Tx9C5H2" title="Line Official"><i class="fa-brands fa-line"></i></a>
+                <a href="#" title="YouTube Channel"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header id="main-header">
+        <div class="container nav-container">
+            <a href="#" class="logo-box">
+                <img src="https://i.postimg.cc/bJHrZZ3R/loko-ch-xs-n-ange-n.png" alt="โลโก้ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา" onerror="this.src='https://placehold.co/120x120/0033a0/ffffff?text=Deaf+Club'">
+                <div class="logo-text">
+                    <h1>ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</h1>
+                    <p>CLUB OF THE DEAF IN CHACHOENGSAO</p>
+                </div>
+            </a>
+
+            <!-- Mobile Hamburger Button -->
+            <div class="mobile-toggle" id="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <!-- Navigation Links with Complete Requested Dropdowns -->
+            <ul class="nav-menu" id="nav-menu">
+                
+                <!-- 1. เกี่ยวกับชมรม -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);">
+                        <span><i class="fa-solid fa-users-rectangle"></i> เกี่ยวกับชมรม</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://cdccodeaf-cyber.github.io/cdcco/history.html" target="_blank"><i class="fa-solid fa-building-columns"></i> ประวัติ</a></li>
+                        <li><a href="https://cdccodeaf-cyber.github.io/cdcco/clubbylaws.html" target="_blank"><i class="fa-solid fa-building-columns"></i> ข้อบังคับ</a></li>
+                        <li><a href="https://cdccodeaf-cyber.github.io/cdcco/presidents.html" target="_blank"><i class="fa-solid fa-building-columns"></i> รายนามอดีตประธาน</a></li>
+                        <li><a href="https://cdccodeaf-cyber.github.io/cdcco/committee.html" target="_blank"><i class="fa-solid fa-building-columns"></i> คณะกรรมการบริหาร</a></li>
+                    </ul>
+                </li>
+
+                <!-- 2. หน่วยบริการ / เว็บอื่นๆ -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);">
+                        <span><i class="fa-solid fa-handshake"></i> หน่วยบริการ / เว็บอื่นๆ</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://www.dep.go.th" target="_blank"><i class="fa-solid fa-building-columns"></i> กรมส่งเสริมและพัฒนาคุณภาพชีวิตคนพิการ (พก.)</a></li>
+                        <li><a href="https://www.nadt.or.th" target="_blank"><i class="fa-solid fa-hands-asl-interpreting"></i> สมาคมคนหูหนวกแห่งประเทศไทย</a></li>
+                        <li><a href="https://www.chachoengsao.go.th" target="_blank"><i class="fa-solid fa-landmark"></i> จังหวัดฉะเชิงเทรา</a></li>
+                        <li><a href="javascript:void(0);" onclick="openModal('ศูนย์บริการคนพิการจังหวัดฉะเชิงเทรา', 'ข้อมูลและการติดต่อศูนย์บริการคนพิการจังหวัดฉะเชิงเทรา เพื่อรับการสนับสนุนสวัสดิการรัฐ')"><i class="fa-solid fa-house-medical-flag"></i> ศูนย์บริการคนพิการจังหวัดฉะเชิงเทรา</a></li>
+                    </ul>
+                </li>
+
+                <!-- 3. ข่าวสาร -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);">
+                        <span><i class="fa-solid fa-newspaper"></i> ข่าวสาร</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="news.html"> ข่าวประชาสัมพันธ์</a></li>
+                        <li><a href="work.html"> สมัครงานคนพิการ</a></li>
+                        <li><a href="report.html"> รายงานประจำปี</a></li>
+                    </ul>
+                </li>
+
+                <!-- 4. คลังข้อมูล -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);">
+                        <span><i class="fa-solid fa-database"></i> คลังข้อมูล</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="javascript:void(0);" onclick="openModal('ประกาศชมรม', 'รวมประกาศ คำสั่ง และแจ้งเตือนสำคัญจากชมรมคนหูหนวกจังหวัดฉะเชิงเทรา')"><i class="fa-solid fa-scroll"></i> ประกาศ</a></li>
+                        <li><a href="javascript:void(0);" onclick="openModal('ข้อมูลการทำใบขับขี่', 'ขั้นตอน คู่มือ และสิทธิของผู้พิการทางการได้ยินในการทดสอบและขอรับใบอนุญาตขับรถ')"><i class="fa-solid fa-id-card"></i> ใบขับขี่</a></li>
+                        <li><a href="javascript:void(0);" onclick="openModal('ข้อมูลสถิติ', 'สถิติจำนวนผู้พิการทางการได้ยินในพื้นที่ 11 อำเภอของจังหวัดฉะเชิงเทรา')"><i class="fa-solid fa-chart-pie"></i> ข้อมูลสถิติ</a></li>
+                    </ul>
+                </li>
+
+                <!-- 5. กิจกรรม -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);">
+                        <span><i class="fa-solid fa-calendar-days"></i> กิจกรรม</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#activities"><i class="fa-solid fa-diagram-project"></i> โครงการ</a></li>
+                    </ul>
+                </li>
+
+                <!-- 6. ดาวน์โหลด -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);">
+                        <span><i class="fa-solid fa-download"></i> ดาวน์โหลด</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#downloads"><i class="fa-solid fa-icons"></i> ตรงสัญลักษณ์</a></li>
+                        <li><a href="javascript:void(0);" onclick="openModal('นิทานสองภาษา', 'สื่อการเรียนรู้นิทานสองภาษา (ภาษามือไทยและภาษาเขียน) สำหรับเด็กหูหนวกและครอบครัว')"><i class="fa-solid fa-book-open-reader"></i> นิทานสองภาษา</a></li>
+                        <li><a href="javascript:void(0);" onclick="openModal('แอปพลิเคชันภาษามือไทย', 'แนะนำและลิงก์ดาวน์โหลดแอปพลิเคชันเรียนรู้ภาษามือไทยและวิดีโอภาษามือ')"><i class="fa-solid fa-mobile-screen-button"></i> แอปภาษามือไทย</a></li>
+                    </ul>
+                </li>
+
+                <!-- 7. ปุ่มเด่น: เว็บไซต์ระบบทะเบียนสมาชิก -->
+                <li>
+                    <a href="https://script.google.com/macros/s/AKfycbxsj_LGlybLUzJqKRuMQdBMQy_-NaOBX8adnfzv07BfGq619jPuFAtOFv2Be4LzkvXpfA/exec" class="btn-register-nav">
+                        <i class="fa-solid fa-user-plus"></i> เว็บไซต์ระบบทะเบียนสมาชิก
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
 <div class="page-banner">
         <h2>ข้อบังคับชมรม</h2>
         <p>ระเบียบและแนวทางปฏิบัติในการดำเนินงานของชมรม</p>
@@ -8,3 +1054,140 @@
         <p><strong>หมวดที่ 2 วัตถุประสงค์</strong><br>ข้อ 2. เพื่อส่งเสริมและพัฒนาคุณภาพชีวิตของคนหูหนวก ส่งเสริมสิทธิเสรีภาพ และความเสมอภาคทางสังคม</p>
         <p><strong>หมวดที่ 3 สมาชิกภาพ</strong><br>ข้อ 3. สมาชิกของชมรมประกอบด้วยสมาชิกสามัญและสมาชิกกิตติมศักดิ์ ซึ่งมีคุณสมบัติตามระเบียบข้อบังคับที่กำหนด</p>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col" style="grid-column: span 1.5;">
+                    <div class="footer-logo-box">
+                        <img src="https://i.postimg.cc/bJHrZZ3R/loko-ch-xs-n-ange-n.png" alt="โลโก้ชมรม" onerror="this.src='https://placehold.co/100x100/0033a0/ffffff?text=Deaf+Club'">
+                        <div>
+                            <h4 style="margin-bottom:0; color:#fff;">ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</h4>
+                            <p style="font-size:0.75rem; margin:0; color:#94a3b8;">CLUB OF THE DEAF IN CHACHOENGSAO</p>
+                        </div>
+                    </div>
+                    <p>ศูนย์กลางส่งเสริมศักยภาพ สิทธิ สวัสดิการ และการสื่อสารเพื่อผู้พิการทางการได้ยินในจังหวัดฉะเชิงเทรา มุ่งสร้างสังคมแห่งความเท่าเทียม</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>เมนูด่วน</h4>
+                    <li><a href="history.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> เกี่ยวกับชมรม</a></li>
+                    <li><a href="news.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> ข่าวสาร</a></li>
+                    <li><a href="#activities"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> โครงการ / กิจกรรม</a></li>
+                    <li><a href="#downloads"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> ดาวน์โหลด</a></li>
+                    <li><a href="https://script.google.com/macros/s/AKfycbxsj_LGlybLUzJqKRuMQdBMQy_-NaOBX8adnfzv07BfGq619jPuFAtOFv2Be4LzkvXpfA/exec"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> ระบบลงทะเบียนสมาชิก</a></li>
+                </div>
+
+                <div class="footer-col">
+                    <h4>หน่วยงานภาคีเครือข่าย</h4>
+                    <li><a href="https://www.dep.go.th" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.7rem;"></i> กรมส่งเสริมคุณภาพชีวิตคนพิการ</a></li>
+                    <li><a href="https://www.nadt.or.th" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.7rem;"></i> สมาคมคนหูหนวกแห่งประเทศไทย</a></li>
+                    <li><a href="https://www.chachoengsao.go.th" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.7rem;"></i> จังหวัดฉะเชิงเทรา</a></li>
+                </div>
+
+                <div class="footer-col">
+                    <h4>ติดต่อชมรม</h4>
+                    <ul class="contact-list">
+                        <li><i class="fa-solid fa-location-dot"></i> <span>59/66 ม.7 ต.บางเกลือง อ.บางปะกง จังหวัดฉะเชิงเทรา 24000</span></li>
+                        <li><i class="fa-solid fa-comment-sms"></i> <span>ติดต่อผ่าน LINE @866jlwqf</span></li>
+                        <li><i class="fa-solid fa-envelope"></i> <span>cdcco.deaf@gmail.com</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา (Club of the Deaf in Chachoengsao). All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Box for Dynamic Dialogs -->
+    <div class="modal-overlay" id="infoModal">
+        <div class="modal-box">
+            <span class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></span>
+            <h3 id="modalTitle" style="color:var(--primary-blue); font-size:1.5rem; margin-bottom:15px;">หัวข้อข้อมูล</h3>
+            <div id="modalBody" style="color:var(--text-main); font-size:1rem; line-height:1.7;">
+                รายละเอียดข้อมูล...
+            </div>
+            <div style="margin-top:25px; text-align:right;">
+                <button class="btn btn-gold" onclick="closeModal()">ตกลง / ปิดหน้าต่าง</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements Initialization
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const dropdowns = document.querySelectorAll('.dropdown');
+        const infoModal = document.getElementById('infoModal');
+
+        // Mobile Menu Toggle Drawer
+        mobileBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileBtn.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Touch/Click Toggle for Dropdowns on Mobile Devices
+        dropdowns.forEach(dropdown => {
+            const dropLink = dropdown.querySelector('a');
+            dropLink.addEventListener('click', (e) => {
+                if (window.innerWidth <= 992) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('open');
+                }
+            });
+        });
+
+        // Close Mobile Drawer when clicking sub-links
+        document.querySelectorAll('.dropdown-menu a, .btn-register-nav').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 992) {
+                    navMenu.classList.remove('active');
+                    const icon = mobileBtn.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+        });
+
+        // Modal Controls Functions
+        function openModal(title, content) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBody').innerText = content;
+            infoModal.classList.add('active');
+        }
+
+        function closeModal() {
+            infoModal.classList.remove('active');
+        }
+
+        // Close Modal when clicking background overlay
+        window.addEventListener('click', (e) => {
+            if (e.target === infoModal) {
+                closeModal();
+            }
+        });
+
+        // Sticky Header Elevation Transition
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 10px 30px rgba(0,0,0,0.12)';
+            } else {
+                header.style.boxShadow = 'var(--shadow-sm)';
+            }
+        });
+    </script>
+</body>
+</html>
