@@ -155,15 +155,21 @@
             letter-spacing: 0.3px;
         }
 
-        /* Desktop Navigation Menu */
+        /* Blue-to-gold responsive navigation menu */
+        .nav-container {
+            gap: 18px;
+        }
+
         .nav-menu {
             display: flex;
             list-style: none;
             gap: 4px;
             align-items: center;
+            margin: 0;
+            padding: 0;
         }
 
-        .nav-menu li {
+        .nav-menu > li {
             position: relative;
         }
 
@@ -171,101 +177,124 @@
             text-decoration: none;
             color: var(--text-main);
             font-weight: 600;
-            font-size: 0.9rem;
-            padding: 10px 12px;
-            border-radius: 8px;
-            transition: var(--transition);
+            font-size: 0.88rem;
+            padding: 10px 11px;
+            border-radius: 9px;
+            transition: color .22s ease, background .22s ease, transform .22s ease;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            justify-content: space-between;
+            gap: 8px;
             cursor: pointer;
         }
 
-        .nav-menu a:hover, 
+        .nav-menu > li.dropdown > a {
+            background: linear-gradient(115deg, rgba(0,51,160,.07), rgba(212,175,55,.10));
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a:focus-visible,
         .nav-menu a.active {
             color: var(--primary-blue);
-            background-color: var(--light-blue-bg);
+            background: linear-gradient(115deg, rgba(0,51,160,.13), rgba(212,175,55,.22));
+            outline: none;
         }
 
-        /* Dropdown Styling */
+        .nav-menu a:focus-visible {
+            box-shadow: 0 0 0 3px rgba(0, 168, 232, .28);
+        }
+
         .dropdown-menu {
-            display: none;
+            display: block;
             position: absolute;
-            top: 100%;
+            top: calc(100% + 8px);
             left: 0;
-            background-color: #ffffff;
-            min-width: 250px;
-            box-shadow: var(--shadow-lg);
+            min-width: 255px;
+            max-width: min(340px, 90vw);
+            background: #fff;
+            box-shadow: 0 14px 35px rgba(0, 33, 105, .18);
             border-radius: 12px;
-            padding: 8px 0;
+            padding: 8px;
+            margin: 0;
             list-style: none;
             z-index: 1010;
-            border: 1px solid var(--border-color);
-            transform: translateY(10px);
+            border: 1px solid rgba(0, 51, 160, .12);
+            visibility: hidden;
             opacity: 0;
-            transition: var(--transition);
+            transform: translateY(8px);
+            pointer-events: none;
+            transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
         }
 
-        .dropdown:hover .dropdown-menu {
-            display: block;
-            transform: translateY(0);
+        .dropdown:hover > .dropdown-menu,
+        .dropdown:focus-within > .dropdown-menu,
+        .dropdown.open > .dropdown-menu {
+            visibility: visible;
             opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
         }
 
-        .dropdown-menu li {
-            width: 100%;
-        }
+        .dropdown-menu li { width: 100%; }
 
         .dropdown-menu li a {
-            padding: 10px 16px;
-            color: var(--text-main);
-            font-size: 0.88rem;
-            font-weight: 500;
-            border-radius: 0;
-            width: 100%;
             display: flex;
-            align-items: center;
-            gap: 8px;
+            width: 100%;
+            padding: 10px 12px;
+            color: #26364d;
+            font-size: .88rem;
+            font-weight: 500;
+            border-radius: 8px;
+            line-height: 1.45;
         }
 
-        .dropdown-menu li a:hover {
-            background-color: var(--light-blue-bg);
+        .dropdown-menu li a:hover,
+        .dropdown-menu li a:focus-visible {
             color: var(--primary-blue);
-            padding-left: 20px;
+            background: linear-gradient(110deg, rgba(0,51,160,.09), rgba(212,175,55,.18));
+            transform: translateX(2px);
         }
 
-        /* Special Registration Button */
         .btn-register-nav {
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark)) !important;
-            color: #ffffff !important;
-            padding: 10px 18px !important;
+            background: linear-gradient(120deg, var(--primary-blue), var(--primary-dark) 62%, #80631b) !important;
+            color: #fff !important;
+            padding: 11px 15px !important;
             border-radius: 30px !important;
-            box-shadow: 0 4px 12px rgba(0, 51, 160, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            margin-left: 8px;
+            box-shadow: 0 5px 14px rgba(0, 51, 160, .22);
+            border: 1px solid rgba(212, 175, 55, .75);
+            margin-left: 5px;
+            white-space: normal;
         }
 
-        .btn-register-nav:hover {
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-hover)) !important;
-            color: var(--dark-bg) !important;
-            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
-            transform: translateY(-2px);
+        .btn-register-nav:hover,
+        .btn-register-nav:focus-visible {
+            background: linear-gradient(120deg, var(--accent-gold), #f1d77d) !important;
+            color: var(--primary-dark) !important;
+            box-shadow: 0 7px 18px rgba(212, 175, 55, .35);
+            transform: translateY(-1px);
         }
 
         .mobile-toggle {
             display: none;
-            font-size: 1.6rem;
-            color: var(--primary-blue);
+            border: 0;
+            font-size: 1.35rem;
+            color: #fff;
             cursor: pointer;
-            padding: 8px;
-            border-radius: 8px;
-            background: var(--light-blue-bg);
+            padding: 10px 13px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary-blue), #80631b);
+            box-shadow: 0 4px 12px rgba(0, 51, 160, .2);
+        }
+
+        .mobile-toggle:focus-visible {
+            outline: 3px solid var(--accent-gold);
+            outline-offset: 3px;
         }
 
         .hero {
             position: relative;
             background: linear-gradient(135deg, rgba(0, 33, 105, 0.92), rgba(15, 23, 42, 0.88)), 
-                        url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+                        url('https://i.postimg.cc/Zn6q1XKT/chm-rm-khnh-hn-wk-chache-ng-the-ra-n-w-dso-thr.png') center/cover no-repeat;
             color: #ffffff;
             padding: 120px 0 100px;
             overflow: hidden;
@@ -845,77 +874,66 @@
             color: var(--text-main);
         }
 
-        @media (max-width: 992px) {
-            .mobile-toggle {
-                display: block;
-            }
+        @media (max-width: 1100px) {
+            .mobile-toggle { display: inline-flex; align-items: center; justify-content: center; }
 
-            .top-bar-info span:not(:first-child) {
-                display: none;
-            }
+            .top-bar-info span:not(:first-child) { display: none; }
 
             .nav-menu {
                 position: fixed;
                 top: 0;
-                right: -100%;
-                width: 310px;
-                height: 100vh;
-                background-color: #ffffff;
+                right: 0;
+                width: min(360px, 88vw);
+                height: 100dvh;
+                background: linear-gradient(160deg, #ffffff 0%, #f3f7ff 68%, #fff8df 100%);
                 flex-direction: column;
                 justify-content: flex-start;
-                align-items: flex-start;
-                padding: 85px 20px 40px;
-                box-shadow: var(--shadow-lg);
-                transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-                z-index: 999;
+                align-items: stretch;
+                gap: 5px;
+                padding: 88px 18px 32px;
+                box-shadow: -12px 0 35px rgba(0, 33, 105, .2);
+                z-index: 1001;
                 overflow-y: auto;
+                visibility: hidden;
+                transform: translateX(105%);
+                transition: transform .3s ease, visibility .3s ease;
             }
 
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .nav-menu li {
-                width: 100%;
-                margin-bottom: 2px;
-            }
-
-            .nav-menu a {
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-                padding: 12px 14px;
-                font-size: 0.95rem;
-            }
+            .nav-menu.active { visibility: visible; transform: translateX(0); }
+            .nav-menu > li { width: 100%; margin-bottom: 2px; }
+            .nav-menu > li > a { display: flex; width: 100%; padding: 13px 14px; font-size: .95rem; }
+            .nav-menu > li.dropdown > a { border: 1px solid rgba(0,51,160,.08); }
 
             .dropdown-menu {
                 position: static;
-                box-shadow: none;
-                border: none;
-                background-color: var(--light-blue-bg);
-                padding-left: 10px;
-                border-radius: 8px;
-                transform: none;
-                opacity: 1;
+                min-width: 0;
+                max-width: none;
+                width: 100%;
+                box-shadow: inset 0 1px 5px rgba(0, 33, 105, .06);
+                border: 0;
+                background: rgba(0, 51, 160, .045);
+                padding: 5px;
                 margin-top: 4px;
+                border-radius: 9px;
+                visibility: visible;
+                opacity: 1;
+                transform: none;
+                pointer-events: auto;
                 display: none;
             }
 
-            .dropdown.open .dropdown-menu {
-                display: block;
-            }
-
-            .btn-register-nav {
-                margin-left: 0;
-                margin-top: 10px;
-                justify-content: center;
-            }
-
+            .dropdown.open > .dropdown-menu { display: block; }
+            .dropdown-menu li a { white-space: normal; }
+            .btn-register-nav { margin: 9px 0 0; justify-content: center; text-align: center; }
             .hero h2 { font-size: 2rem; }
             .hero p { font-size: 1rem; }
             .logo-box img { height: 52px; }
             .logo-text h1 { font-size: 1.05rem; }
             .promo-content { flex-direction: column; text-align: center; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .nav-menu, .dropdown-menu, .nav-menu a, .mobile-toggle { transition: none !important; }
         }
     </style>
 </head>
@@ -925,7 +943,7 @@
     <div class="top-bar">
         <div class="container top-bar-content">
             <div class="top-bar-info">
-                <a href="https://maps.app.goo.gl/P3dr8oQ1vtMZZDHD9" title="แผนที่ ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา"><i class="fa-solid fa-location-dot"></i></a>
+                <a href="https://maps.app.goo.gl/P3dr8oQ1vtMZZDHD9" title="แผนที่ ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา"><span><i class="fa-solid fa-location-dot"></i> แผนที่</span></a>
                 <span><i class="fa-solid fa-envelope"></i> cdcco.deaf@gmail.com</span>
                 <span><i class="fa-solid fa-phone"></i> ติดต่อผ่าน LINE Official @866jlwqf</span>
             </div>
@@ -940,7 +958,7 @@
     <!-- Main Navigation Header -->
     <header id="main-header">
         <div class="container nav-container">
-            <a href="index.html" class="logo-box">
+            <a href="#" class="logo-box">
                 <img src="https://i.postimg.cc/bJHrZZ3R/loko-ch-xs-n-ange-n.png" alt="โลโก้ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา" onerror="this.src='https://placehold.co/120x120/0033a0/ffffff?text=Deaf+Club'">
                 <div class="logo-text">
                     <h1>ชมรมคนหูหนวกจังหวัดฉะเชิงเทรา</h1>
@@ -949,44 +967,44 @@
             </a>
 
             <!-- Mobile Hamburger Button -->
-            <div class="mobile-toggle" id="mobile-menu-btn">
-                <i class="fa-solid fa-bars"></i>
-            </div>
+            <button class="mobile-toggle" id="mobile-menu-btn" type="button" aria-label="เปิดเมนู" aria-controls="nav-menu" aria-expanded="false">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
 
             <!-- Navigation Links with Complete Requested Dropdowns -->
             <ul class="nav-menu" id="nav-menu">
                 
                 <!-- 1. เกี่ยวกับชมรม -->
                 <li class="dropdown">
-                    <a href="javascript:void(0);">
+                    <a href="javascript:void(0);" aria-haspopup="true" aria-expanded="false">
                         <span><i class="fa-solid fa-users-rectangle"></i> เกี่ยวกับชมรม</span>
                         <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="https://cdccodeaf-cyber.github.io/cdcco/history.html" target="_blank"><i class="fa-solid fa-building-columns"></i> ประวัติ</a></li>
-                        <li><a href="https://cdccodeaf-cyber.github.io/cdcco/clubbylaws.html" target="_blank"><i class="fa-solid fa-building-columns"></i> ข้อบังคับ</a></li>
-                        <li><a href="https://cdccodeaf-cyber.github.io/cdcco/presidents.html" target="_blank"><i class="fa-solid fa-building-columns"></i> รายนามอดีตประธาน</a></li>
-                        <li><a href="https://cdccodeaf-cyber.github.io/cdcco/committee.html" target="_blank"><i class="fa-solid fa-building-columns"></i> คณะกรรมการบริหาร</a></li>
+                        <li><a href="https://cdccodeaf-cyber.github.io/cdcco/history.html" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-building-columns"></i> ประวัติ</a></li>
+                        <li><a href="https://cdccodeaf-cyber.github.io/cdcco/clubbylaws.html" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-building-columns"></i> ข้อบังคับ</a></li>
+                        <li><a href="https://cdccodeaf-cyber.github.io/cdcco/presidents.html" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-building-columns"></i> รายนามอดีตประธาน</a></li>
+                        <li><a href="https://cdccodeaf-cyber.github.io/cdcco/committee.html" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-building-columns"></i> คณะกรรมการบริหาร</a></li>
                     </ul>
                 </li>
 
                 <!-- 2. หน่วยบริการ / เว็บอื่นๆ -->
                 <li class="dropdown">
-                    <a href="javascript:void(0);">
+                    <a href="javascript:void(0);" aria-haspopup="true" aria-expanded="false">
                         <span><i class="fa-solid fa-handshake"></i> หน่วยบริการ / เว็บอื่นๆ</span>
                         <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="https://www.dep.go.th" target="_blank"><i class="fa-solid fa-building-columns"></i> กรมส่งเสริมและพัฒนาคุณภาพชีวิตคนพิการ (พก.)</a></li>
-                        <li><a href="https://www.nadt.or.th" target="_blank"><i class="fa-solid fa-hands-asl-interpreting"></i> สมาคมคนหูหนวกแห่งประเทศไทย</a></li>
-                        <li><a href="https://www.chachoengsao.go.th" target="_blank"><i class="fa-solid fa-landmark"></i> จังหวัดฉะเชิงเทรา</a></li>
+                        <li><a href="https://www.dep.go.th" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-building-columns"></i> กรมส่งเสริมและพัฒนาคุณภาพชีวิตคนพิการ (พก.)</a></li>
+                        <li><a href="https://www.nadt.or.th" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-hands-asl-interpreting"></i> สมาคมคนหูหนวกแห่งประเทศไทย</a></li>
+                        <li><a href="https://www.chachoengsao.go.th" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-landmark"></i> จังหวัดฉะเชิงเทรา</a></li>
                         <li><a href="javascript:void(0);" onclick="openModal('ศูนย์บริการคนพิการจังหวัดฉะเชิงเทรา', 'ข้อมูลและการติดต่อศูนย์บริการคนพิการจังหวัดฉะเชิงเทรา เพื่อรับการสนับสนุนสวัสดิการรัฐ')"><i class="fa-solid fa-house-medical-flag"></i> ศูนย์บริการคนพิการจังหวัดฉะเชิงเทรา</a></li>
                     </ul>
                 </li>
 
                 <!-- 3. ข่าวสาร -->
                 <li class="dropdown">
-                    <a href="javascript:void(0);">
+                    <a href="javascript:void(0);" aria-haspopup="true" aria-expanded="false">
                         <span><i class="fa-solid fa-newspaper"></i> ข่าวสาร</span>
                         <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
                     </a>
@@ -999,7 +1017,7 @@
 
                 <!-- 4. คลังข้อมูล -->
                 <li class="dropdown">
-                    <a href="javascript:void(0);">
+                    <a href="javascript:void(0);" aria-haspopup="true" aria-expanded="false">
                         <span><i class="fa-solid fa-database"></i> คลังข้อมูล</span>
                         <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
                     </a>
@@ -1012,7 +1030,7 @@
 
                 <!-- 5. กิจกรรม -->
                 <li class="dropdown">
-                    <a href="javascript:void(0);">
+                    <a href="javascript:void(0);" aria-haspopup="true" aria-expanded="false">
                         <span><i class="fa-solid fa-calendar-days"></i> กิจกรรม</span>
                         <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
                     </a>
@@ -1023,7 +1041,7 @@
 
                 <!-- 6. ดาวน์โหลด -->
                 <li class="dropdown">
-                    <a href="javascript:void(0);">
+                    <a href="javascript:void(0);" aria-haspopup="true" aria-expanded="false">
                         <span><i class="fa-solid fa-download"></i> ดาวน์โหลด</span>
                         <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
                     </a>
