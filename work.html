@@ -935,6 +935,49 @@
         @media (prefers-reduced-motion: reduce) {
             .nav-menu, .dropdown-menu, .nav-menu a, .mobile-toggle { transition: none !important; }
         }
+        /* Page Content Styles */
+        .page-banner {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+            color: #ffffff;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .page-banner h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .content-container {
+            max-width: 1280px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .content-container h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+
+        .content-container li {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .content-container a {
+            color: var(--primary-blue);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .content-container a:hover {
+            color: var(--accent-gold);
+        }
+
     </style>
 </head>
 <body>
@@ -973,7 +1016,10 @@
 
             <!-- Navigation Links with Complete Requested Dropdowns -->
             <ul class="nav-menu" id="nav-menu">
-                
+                <li class="dropdown">
+                	<a href="index.html" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-users-rectangle">
+                        <span>หน้าแรก</span></i>
+                 </a>
                 <!-- 1. เกี่ยวกับชมรม -->
                 <li class="dropdown">
                     <a href="javascript:void(0);" aria-haspopup="true" aria-expanded="false">
@@ -1062,13 +1108,22 @@
         </div>
     </header>
 
-<div class="page-banner">
+    <!-- Banner -->
+    <div class="page-banner">
         <h2>ข่าวสมัครงาน</h2>
         <p>ประกาศรับสมัครงาน ตำแหน่งงานว่าง และโอกาสสร้างอาชีพสำหรับคนหูหนวก</p>
     </div>
+
+    <!-- Content Section -->
     <div class="content-container">
         <h3>ตำแหน่งงานที่เปิดรับสมัคร</h3>
-			<li><a href="https://www.doe.go.th/prd/assets/upload/files/chachoengsao_th/9b4eddc2f8870d1a0b1407ce7624394f.pdf" target="_blank"><i class="fa-solid fa-building-columns"></i> ตำแหน่งงานว่าง ประจำเดือน ตุลาคม 2569 (คนพิการ)</a></li>
+        <ul>
+            <li>
+                <a href="https://www.doe.go.th/prd/assets/upload/files/chachoengsao_th/9b4eddc2f8870d1a0b1407ce7624394f.pdf" target="_blank">
+                    <i class="fa-solid fa-file-pdf"></i> ตำแหน่งงานว่าง ประจำเดือน ตุลาคม 2569 (คนพิการ)
+                </a>
+            </li>
+        </ul>
     </div>
 
     <!-- Footer -->
