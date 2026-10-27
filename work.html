@@ -36,7 +36,7 @@
             --menu-white: #FFF;
         }
 
-        * {
+* {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -165,7 +165,7 @@
             letter-spacing: 0.3px;
         }
 
-        /* Animated Menu Bar Styles */
+        /* Animated Menu Bar Styles (Desktop) */
         .menu {
             background: var(--menu-red);
             height: 4rem;
@@ -220,6 +220,7 @@
             display: block;
             color: var(--menu-white);
             font-weight: 600;
+            cursor: pointer;
         }
 
         .sub-menu {
@@ -228,11 +229,14 @@
             top: 100%;
             left: 0;
             display: none;
-            z-index: 10;
+            z-index: 100;
         }
 
-        .menu-item:hover > .sub-menu {
-            display: block;
+        /* Desktop Hover Behavior */
+        @media screen and (min-width: 769px) {
+            .menu-item:hover > .sub-menu {
+                display: block;
+            }
         }
 
         .sub-menu .menu-item {
@@ -256,10 +260,11 @@
             padding: 0 0.75rem;
         }
 
-        /* Mobile Responsive Menu */
+        /* Mobile Responsive Menu Fixes (iOS & Android Touch Support) */
         @media screen and (max-width: 768px) {
             .menu {
                 position: relative;
+                cursor: pointer;
             }
 
             .menu:after {
@@ -277,9 +282,25 @@
                 display: none;
                 background: var(--menu-red);
                 flex-direction: column;
-                justify-content: center;
-                height: 100vh;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                height: auto;
+                min-height: 100vh;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                z-index: 999;
                 animation: fade 0.2s ease-out;
+            }
+
+            /* ควบคุมการเปิดด้วย JavaScript class แทน :hover */
+            .menu.is-open > ol {
+                display: flex;
+            }
+
+            .menu.is-open:after {
+                box-shadow: none;
             }
 
             .menu > ol > .menu-item {
@@ -298,29 +319,17 @@
                 margin-top: 0.75rem;
             }
 
-            .menu > ol > .menu-item:after {
-                left: auto;
-                right: 1rem;
-                bottom: calc(50% - 2px);
-            }
-
-            .menu > ol > .menu-item:hover {
-                z-index: 1;
-            }
-
-            .menu:hover > ol {
-                display: flex;
-            }
-
-            .menu:hover:after {
-                box-shadow: none;
-            }
-
             .sub-menu {
-                width: 100vw;
-                left: -2rem;
-                top: 50%;
-                transform: translateY(-50%);
+                position: relative;
+                width: 100%;
+                left: 0;
+                top: 0;
+                transform: none;
+            }
+
+            /* แสดงเมนูย่อยเมื่อแตะหัวข้อบนมือถือ */
+            .menu-item.is-active > .sub-menu {
+                display: block;
             }
 
             .sub-menu .menu-item {
@@ -332,7 +341,7 @@
             .logo-text h1 { font-size: 1.05rem; }
         }
 
-        /* Animations */
+        /* Keyframes */
         @keyframes enter {
             from {
                 opacity: 0;
