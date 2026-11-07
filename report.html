@@ -699,6 +699,58 @@
             color: #ffffff;
         }
 
+		.btn:hover {
+  box-shadow: 3px 4.9px 16px rgba(27, 139, 249, 0.6);
+  letter-spacing: 5px;
+        }
+        
+        .btn--clicked {
+          transition: 0.6s cubic-bezier(0.01, 1.69, 0.99, 0.94);
+          padding: 15px 2px;
+          width: 50px;
+          color: transparent;
+          z-index: -10;
+        }
+
+        .color {
+          display: block;
+          width: 0;
+          height: 0;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          position: absolute;
+          transition: 0.8s ease;
+          border-radius: 50%;
+          background-color: transparent;
+        }
+
+        .expanded {
+          width: 200%;
+          padding-bottom: 200%;
+          height: auto;
+        }
+
+        .color--blue {
+          background-color: #1b8bf9;
+          transition-delay: 0.25s;
+        }
+
+        .color--orange {
+          background-color: #FF6C19;
+          transition-delay: 0.5s;
+        }
+
+        .color--green {
+          background-color: #41FF9F;
+          transition-delay: 0.75s;
+        }
+
+        .color--white {
+          background-color: #f9f9f9;
+          transition-delay: 1s;
+        }
+
         /* Promo Banner */
         .promo-banner {
             background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
@@ -1076,12 +1128,17 @@
     <div class="content-container">
         <h3>เอกสารรายงานประจำปี</h3>
  <li>
+ 				<div class="container">
                     <a href="https://drive.google.com/file/d/15wKgCubqgE9QtFjDShwfwer8s3obNzFd/view?usp=sharing" class="btn btn-primary">
                         <i class="fa-solid fa-user-plus"></i> รายงานประจำปี 2564
                     </a>
+                   </div>
+                 <div class="container">
                     <a href="https://drive.google.com/file/d/1HUK0ddBMzz-NX2KkByMBQSrMgoAfUUCK/view?usp=sharing" class="btn btn-primary">
                         <i class="fa-solid fa-user-plus"></i> รายงานประจำปี 2565
                     </a>
+                   </div>
+                  <div class="container">
                     <a href="https://drive.google.com/file/d/1CIiS6OZ50_qsOmTWwEP0eTtgcyNEQRDy/view?usp=sharing" class="btn btn-primary">
                         <i class="fa-solid fa-user-plus"></i> รายงานประจำปี 2568
                     </a>
@@ -1167,6 +1224,15 @@
                 icon.classList.add('fa-bars');
             }
         });
+
+        const button = document.querySelector('.btn');
+          button.addEventListener('click',(e)=>{
+            e.preventDefault();
+            button.classList.add('btn--clicked');
+            document.querySelectorAll('span').forEach((element)=>{element.classList.add('expanded')})
+            
+                 setTimeout(()=>{button.classList.remove("btn--clicked")},3500);
+    			 setTimeout(()=>{document.querySelectorAll('span').forEach((element)=>{element.classList.remove('expanded')})},1700)});
 
         // Touch/Click Toggle for Dropdowns on Mobile Devices
         dropdowns.forEach(dropdown => {
