@@ -826,7 +826,50 @@
             font-size: 0.85rem;
             color: #64748b;
         }
+        
+	        /* Page Content Styles */
+        .page-banner {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
+            color: #ffffff;
+            padding: 60px 20px;
+            text-align: center;
+        }
 
+        .page-banner h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .content-container {
+            max-width: 1280px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .content-container h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+
+        .content-container li {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .content-container a {
+            color: var(--primary-blue);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .content-container a:hover {
+            color: var(--accent-gold);
+        }
+        
         /* Modal Overlay */
         .modal-overlay {
             display: none;
